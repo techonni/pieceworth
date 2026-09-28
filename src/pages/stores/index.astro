@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import { brands } from "../../lib/content";
+---
+
+<Base title="Stores" description="The luxury stores we cover: what they sell, how they ship, and what to check before buying.">
+  <h1 class="pt-6 font-serif text-[40px] leading-tight">Stores</h1>
+  <ul class="mt-8 divide-y divide-line border-t border-b border-line">
+    {
+      brands.map((brand) => (
+        <li>
+          <a href={`/stores/${brand.slug}/`} class="block py-5 hover:opacity-60">
+            <span class="font-serif text-[24px]">{brand.name}</span>
+            <span class="ml-3 text-[12px] text-muted">{brand.kind}</span>
+            <span class="mt-1 block text-[13px] text-muted">{brand.summary}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

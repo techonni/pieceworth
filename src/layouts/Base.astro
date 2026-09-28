@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import { siteName, tagline } from "../lib/content";
+
+interface Props {
+  title?: string;
+  description?: string;
+  type?: string;
+  jsonLd?: object;
+}
+
+const { title, description = tagline, type = "website", jsonLd } = Astro.props;
+const documentTitle = title ? `${title} · ${siteName}` : `${siteName} · Buy luxury wisely`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [
+  { href: "/guides/", label: "Guides" },
+  { href: "/stores/", label: "Stores" },
+  { href: "/about/", label: "About" },
+];
+---
+
+<!doctype html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body class="min-h-screen bg-paper font-sans text-[15px] leading-7 text-ink">
+    <div class="mx-auto max-w-2xl px-5 sm:px-6">
+      <header class="flex items-baseline justify-between py-8">
+        <a href="/" class="font-serif text-2xl tracking-wide">{siteName}</a>
+        <nav class="flex gap-5 text-[13px] text-muted">
+          {nav.map((item) => <a href={item.href} class="hover:text-ink">{item.label}</a>)}
+        </nav>
+      </header>
+      <main class="pb-24">
+        <slot />
+      </main>
+      <footer class="border-t border-line py-10 text-[12px] leading-6 text-muted">
+        <p>
+          Pieceworth is an independent site. Some links are affiliate links: if you buy through them, we may earn a
+          commission at no extra cost to you. <a href="/affiliate-disclosure/" class="underline underline-offset-4">Affiliate disclosure</a>.
+        </p>
+        <p class="mt-3">Always check prices, delivery and return rules on the store's own site before you buy.</p>
+      </footer>
+    </div>
+  </body>
+</html>

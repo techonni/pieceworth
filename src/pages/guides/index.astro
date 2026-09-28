@@ -1,0 +1,20 @@
+---
+import Base from "../../layouts/Base.astro";
+import { guides } from "../../lib/content";
+---
+
+<Base title="Guides" description="Guides to buying luxury online: legit stores, pre-owned, discounts, duties and returns.">
+  <h1 class="pt-6 font-serif text-[40px] leading-tight">Guides</h1>
+  <ul class="mt-8 divide-y divide-line border-t border-b border-line">
+    {
+      guides.map((guide) => (
+        <li>
+          <a href={`/guides/${guide.slug}/`} class="block py-5 hover:opacity-60">
+            <span class="font-serif text-[22px] leading-snug">{guide.question}</span>
+            <span class="mt-1 block text-[13px] text-muted">{guide.summary}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

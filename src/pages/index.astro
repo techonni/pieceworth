@@ -1,0 +1,45 @@
+---
+import Base from "../layouts/Base.astro";
+import { brands, guides } from "../lib/content";
+---
+
+<Base>
+  <section class="pt-10 pb-16">
+    <h1 class="font-serif text-[42px] leading-[1.1] sm:text-[52px]">Buy luxury wisely.</h1>
+    <p class="mt-5 max-w-md text-muted">
+      Where to shop, what to check before paying, and whether the piece is worth it. Short, honest guides.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Guides</h2>
+    <ul class="mt-4 divide-y divide-line border-t border-b border-line">
+      {
+        guides.map((guide) => (
+          <li>
+            <a href={`/guides/${guide.slug}/`} class="block py-5 hover:opacity-60">
+              <span class="font-serif text-[22px] leading-snug">{guide.question}</span>
+              <span class="mt-1 block text-[13px] text-muted">{guide.summary}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Stores</h2>
+    <ul class="mt-4 grid gap-x-8 sm:grid-cols-2">
+      {
+        brands.map((brand) => (
+          <li class="border-b border-line">
+            <a href={`/stores/${brand.slug}/`} class="flex items-baseline justify-between gap-4 py-4 hover:opacity-60">
+              <span>{brand.name}</span>
+              <span class="text-right text-[12px] text-muted">{brand.kind}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

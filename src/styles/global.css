@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+
+@theme {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --color-paper: #fcfcfa;
+  --color-ink: #161616;
+  --color-muted: #75726c;
+  --color-line: #e8e6e1;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.prose-text p + p {
+  margin-top: 0.9rem;
+}
