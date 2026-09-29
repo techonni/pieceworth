@@ -17,7 +17,6 @@ export const MIN_BRAND_PRODUCTS = 8;
 export const categories = [
   { slug: "bags", label: "Bags", title: "Designer bags" },
   { slug: "wallets", label: "Wallets & card holders", title: "Designer wallets and card holders" },
-  { slug: "sunglasses", label: "Sunglasses", title: "Designer sunglasses" },
   { slug: "belts", label: "Belts", title: "Designer belts" },
   { slug: "scarves", label: "Scarves", title: "Designer scarves" },
   { slug: "jewelry", label: "Jewelry", title: "Designer jewelry" },

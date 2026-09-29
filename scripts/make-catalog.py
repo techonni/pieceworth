@@ -45,7 +45,6 @@ def category(row: dict) -> str:
         "Handbag & Wallet Accessories": "bags",
         "Wallets": "wallets",
         "Luggage & Bags": "wallets",  # travel wallets and beauty cases
-        "Sunglasses": "sunglasses",
         "Belts": "belts",
         "Hats": "hats",
         "Flats": "hats",  # flat caps
@@ -65,6 +64,11 @@ def category(row: dict) -> str:
     return "accessories"
 
 
+def is_eyewear(row: dict) -> bool:
+    text = f"{row['Category']} {row['Title']}".lower()
+    return any(word in text for word in ("sunglass", "glasses", "eyewear", "optical", "eyeglass", "spectacle"))
+
+
 def name(row: dict) -> str:
     title = row["Title"].split(" — ")[0].removesuffix(" /").strip()
     vendor = row["Vendor"]
@@ -79,6 +83,8 @@ def main() -> None:
     with source.open(encoding="utf-8-sig") as handle:
         for row in csv.DictReader(handle):
             if row["Availability"] != "InStock" or row["Condition"] != "New":
+                continue
+            if is_eyewear(row):  # no sunglasses or glasses anywhere on the site (Techonni, 29/09)
                 continue
             url = product_url(row["URL"])
             key = urllib.parse.urlparse(url).path
