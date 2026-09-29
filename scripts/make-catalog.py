@@ -3,7 +3,7 @@
 Usage: python3 scripts/make-catalog.py ~/Downloads/Brand-New-Feed_CUSTOM.csv 2026-09-29
 
 Keeps in-stock products only (a sold-out piece earns nothing), one entry per product (size variants
-are merged), sorted by discount. Also picks the 24 pieces shown on the home page.
+are merged), sorted by discount. Also picks the pieces shown on the home page.
 Images and links come from the catalog, which Impact provides for affiliates (see make-picks.py).
 """
 
@@ -19,8 +19,8 @@ LUXURY = {
     "Alexander McQueen", "Ferragamo", "Chloé", "Jacquemus", "Givenchy", "Dolce & Gabbana", "Jil Sander",
     "Marni", "Bottega Veneta", "Fendi", "Loewe", "Celine", "Versace", "Stella McCartney", "Bally",
 }
-# Home page mix, in display order (category slug, count): 24 pieces fill 2, 3 or 4 columns.
-FEATURED = [("bags", 10), ("wallets", 4), ("sunglasses", 4), ("belts", 2), ("scarves", 2), ("jewelry", 2)]
+# Home page mix, in display order (category slug, count): bags and small leather goods only (Techonni, 29/09).
+FEATURED = [("bags", 10), ("wallets", 4)]
 FEATURED_MIN_PRICE = 150  # GBP
 FEATURED_MIN_DISCOUNT = 30  # %
 
