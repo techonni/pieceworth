@@ -1,0 +1,8 @@
+# Products hidden from the shop by hand (Techonni's visual review). One product URL per line, without ?variant.
+https://hardlyeverwornit.com/products/coccinelle-grained-cowhide-wallet-black-1
+https://hardlyeverwornit.com/products/ami-paris-card-case-black-calfskin-cases
+https://hardlyeverwornit.com/products/patou-calfskin-leather-card-case-black-cases
+https://hardlyeverwornit.com/products/saint-laurent-leather-wallet-black-2
+https://hardlyeverwornit.com/products/saint-laurent-leather-wallet-black
+https://hardlyeverwornit.com/products/marni-kids-animal-intarsia-knit-scarf-navy-wool-scarfs
+https://hardlyeverwornit.com/products/valentino-garavani-shawls-scarf-black-exterior-silk-scarfs

@@ -24,7 +24,7 @@ LUXURY = {
 # Categories shown in the shop: the others had too few good photos to look consistent (Techonni, 29/09).
 SHOP_CATEGORIES = {"bags", "wallets", "hats", "scarves"}
 # Home page mix, in display order (category slug, count): bags and small leather goods only (Techonni, 29/09).
-FEATURED = [("bags", 10), ("wallets", 4)]
+FEATURED = [("bags", 11), ("wallets", 3)]
 FEATURED_MIN_PRICE = 150  # GBP
 FEATURED_MIN_DISCOUNT = 30  # %
 
@@ -109,13 +109,16 @@ def main() -> None:
                 "gender": row["Gender"],
                 "image": row["Image"] + "&width=640",
                 "url": url,
+                "text": f"{row['Title']} {row['Description']}".lower(),  # for the photo check, not saved
             }
 
-    items = [item for item in products.values() if item["category"] in SHOP_CATEGORIES]
+    excluded = {line.strip() for line in (Path(__file__).parent / "excluded.txt").read_text().splitlines() if line.startswith("http")}
+    items = [item for item in products.values() if item["category"] in SHOP_CATEGORIES and item["url"].split("?")[0] not in excluded]
     items = keep_beautiful(items)
     items = sorted(items, key=lambda item: (-item["discount"], -item["price"]))
     for index, item in enumerate(items):
         item["id"] = index
+        del item["text"]
 
     featured, per_brand = [], {}
     for slug, count in FEATURED:
