@@ -18,7 +18,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 CACHE = Path(__file__).resolve().parent / "photo-cache.json"
-VERSION = 3  # bump when measure() changes, to re-measure every photo
+VERSION = 4  # bump when measure() changes, to re-measure every photo
 
 LEATHER = ("leather", "calfskin", "lambskin", "goatskin", "cowhide", "calf ", "nappa", "saffiano", "calfleather")
 NOT_PLAIN = ("canvas", "monogram", "nylon", "fabric", "synthetic", "polyester", "polyurethane", "glass", "shaggy",
@@ -57,10 +57,19 @@ def measure(image_url: str) -> dict:
         "lum": int(np.asarray(image.convert("L"))[mask].mean()),
         "sat": round(((hsv[..., 1] > 90) & (hsv[..., 2] > 60) & mask).sum() / max(mask.sum(), 1), 4),
         "fill": round(crop.mean(), 3),  # 1 = solid rectangle
+        # share of the product that is black or very dark brown (dark, and not bluish/greenish/reddish)
+        "dark": round(dark_share(hsv, mask), 3),
         "v": VERSION,
         "edge": int(left <= 1 or right >= width - 2 or top <= 1 or bottom >= height - 2),
         "bg": int(background.mean()),
     }
+
+
+def dark_share(hsv, mask) -> float:
+    hue, sat, val = hsv[..., 0], hsv[..., 1], hsv[..., 2]  # PIL scale 0-255
+    brownish = (hue <= 30) | (hue >= 245)  # orange-brown to warm red-brown
+    dark = (val <= 95) & ((sat <= 70) | brownish)
+    return (dark & mask).sum() / max(mask.sum(), 1)
 
 
 def verdict(m: dict, item: dict) -> bool:
@@ -73,6 +82,10 @@ def verdict(m: dict, item: dict) -> bool:
     if m["dw"] * m["dh"] < (0.23 if category == "bags" else 0.17):  # flat, low pieces look tiny
         return False
     if m["sym"] < 0.9 or m["bsym"] < 0.9:  # front view, upright
+        return False
+    # Only black or very dark brown, a touch of beige or hardware allowed (Techonni, 29/09):
+    # the site is black, white and grey, it must not fill up with colours.
+    if item["detail"] not in ("Black", "Brown") or m["dark"] < 0.8 or m["sat"] > 0.05:
         return False
     if category == "wallets":
         text, name = item["text"], item["name"].lower()
