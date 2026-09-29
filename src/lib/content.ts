@@ -194,7 +194,7 @@ export const guides: Guide[] = [
       { label: "Italist: lifetime authenticity guarantee", url: "https://italist.com/pages/lifetime-authenticity-guarantee" },
       { label: "Italist: returns and refunds", url: "https://italist.gorgias.help/en-US/articles/returns-and-refunds-353682" },
     ],
-    related: ["new-at-a-discount-or-pre-owned", "import-duties-luxury-from-italy-or-uk"],
+    related: ["cancel-italist-order-sizing-sold-out", "new-at-a-discount-or-pre-owned", "import-duties-luxury-from-italy-or-uk"],
   },
   {
     slug: "is-hardly-ever-worn-it-legit",
@@ -558,6 +558,63 @@ export const guides: Guide[] = [
       { label: "The Apartment Cosenza: return conditions", url: "https://www.theapartmentcosenza.com/en-US/policy/condret" },
     ],
     related: ["import-duties-luxury-from-italy-or-uk", "italist-or-the-brand-official-store"],
+  },
+  {
+    slug: "cancel-italist-order-sizing-sold-out",
+    question: "Can you cancel an Italist order? Cancellations, sold-out items and sizing",
+    summary: "What happens after you click « Place order » on Italist: the 5% cancellation fee, why a confirmed order can still be cancelled, and how to choose an Italian size.",
+    updatedOn: "2026-09-29",
+    intro:
+      "Italist sells stock held by independent partner boutiques in Italy, not by a single warehouse. That changes a few things once you have ordered: what you can cancel, why an item can disappear, and how sizes compare. Here is what Italist's own help pages say.",
+    verdict:
+      "Decide before you pay. An order can't be changed once placed, cancelling costs 5% unless you take store credit, and sizes vary by brand, so read the size guide on the product page first.",
+    steps: [
+      {
+        title: "Check the order before you place it",
+        text: "Orders can't be modified once placed, and the delivery address generally can't be changed either. Check the apartment or unit number, the currency and the total at checkout, which is your final price with any duties and taxes.",
+      },
+      {
+        title: "Know what cancelling costs",
+        text: "You can ask to cancel only before the order has been processed, by emailing customer care, and Italist doesn't guarantee it can. If it does, a 5% processing fee is deducted from a refund to your card, so you get back 95%. If you choose store credit instead, you get the full amount. Once the order has shipped, you can't cancel it; you can only return it after delivery.",
+      },
+      {
+        title: "Reply to the refund email",
+        text: "Refunds after a cancellation are not automatic. Italist emails you, and you reply with your choice: store credit or a refund to your original payment method. Allow up to 7 business days for the refund to be processed.",
+      },
+      {
+        title: "Understand why a confirmed order can be cancelled",
+        text: "An item shown as available is in stock at one of the partner boutiques, but their inventory isn't updated instantly. If the piece sold in the boutique's own shop at the same time, you can receive an order confirmation followed by a cancellation email. Customer care then contacts you about the refund. Availability is only certain once the boutique has confirmed the item and prepared it for shipping.",
+      },
+      {
+        title: "Don't count on the Wishlist to hold a piece",
+        text: "Italist can't reserve or hold items, and adding one to your Wishlist doesn't reserve it. Sold-out pieces may come back if a boutique receives new stock, but seasonal and limited pieces may not. A Wishlist notification, depending on your settings, tells you it is back; it is still first come, first served.",
+      },
+      {
+        title: "Choose your size from the product page",
+        text: "Italian, French, US and UK sizes don't convert exactly. As a rough guide, an Italian women's size 40 is often about a US 4, but it depends on the designer, the collection and the cut. Use the Size Guide on each product page, compare its measurements with a piece you own that fits, and read the fit (slim, regular, relaxed, oversized). If you are between sizes, Italist advises not to size up automatically. If you are unsure, ask customer care before ordering.",
+      },
+      {
+        title: "Expect natural leather to vary",
+        text: "Natural leather can vary in grain, color and markings, and photos depend on lighting and screens, so two pieces may not look identical. For shoes, leather may soften with wear, but a pair that is clearly too small won't become your size. If what arrives is significantly different from the description, contact customer care before sending it back.",
+      },
+    ],
+    pitfalls: [
+      "Ordering first and deciding later: a card refund after cancelling loses 5%.",
+      "Waiting for the refund after a cancellation without replying to Italist's email.",
+      "Assuming a Wishlist item is set aside for you.",
+      "Converting an Italian size with a generic chart instead of the product's own size guide.",
+    ],
+    brands: ["italist"],
+    sources: [
+      { label: "Italist help: cancellation policy", url: "https://italist.gorgias.help/en-US/what-is-our-cancellation-policy-6553857" },
+      { label: "Italist help: how do I place an order?", url: "https://italist.gorgias.help/en-US/how-do-i-place-an-order-3651508" },
+      { label: "Italist help: why is the item I ordered not available?", url: "https://italist.gorgias.help/en-US/untitled-8229885" },
+      { label: "Italist help: can you hold items for me?", url: "https://italist.gorgias.help/en-US/can-you-hold-items-for-me-3651512" },
+      { label: "Italist help: do you restock sold-out items?", url: "https://italist.gorgias.help/en-US/do-you-restock-sold-out-items-3651517" },
+      { label: "Italist help: how do I find my size?", url: "https://italist.gorgias.help/en-US/how-do-i-find-my-size-3651513" },
+      { label: "Italist help: Italian sizing compared to US sizing", url: "https://italist.gorgias.help/en-US/what-is-italian-sizing-compared-to-us-sizing-3651514" },
+    ],
+    related: ["is-italist-legit", "italist-or-the-brand-official-store"],
   },
 ];
 

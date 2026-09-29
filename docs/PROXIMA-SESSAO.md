@@ -19,6 +19,12 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 - Nota: o site da loja bloqueia bots (403); as políticas leem-se com curl e User-Agent de browser.
 - Próximo guia: Italist (10 %), p. ex. duty-free/tamanhos, ou pre-owned HEWI.
 
+## Brand kit e guia 10 (3.ª sessão)
+
+- Design system (brand kit) guardado no projeto em `.claude/skills/pieceworth-design/`; regras no CLAUDE.md para todos os papéis (dev, design, escrita, SEO, redes sociais).
+- Guia 10 publicado: « Can you cancel an Italist order? Cancellations, sold-out items and sizing » (taxa de 5 % no cancelamento, encomendas canceladas por stock, sem reservas, tamanhos IT/EUA; factos da ajuda oficial Italist, 29/09). Ligado a partir do guia « Is Italist legit? ». Site tem agora 10 guias.
+- Próximo: pin para este guia; guia HEWI segunda mão.
+
 ## Pendentes do lado do Techonni
 
 - [ ] Google Search Console: verificar o domínio e submeter https://pieceworth.com/sitemap.xml.
