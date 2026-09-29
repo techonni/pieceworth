@@ -1,0 +1,19 @@
+:root {
+  /* Base palette — exact values from src/styles/global.css */
+  --color-paper: #fcfcfa;
+  --color-ink: #161616;
+  --color-muted: #75726c;
+  --color-line: #e8e6e1;
+  --color-white: #ffffff;       /* product image wells (bg-white) */
+  --color-pin-body: #3c3a36;    /* pin bullet text, scripts/make-pins.mjs */
+
+  /* Semantic */
+  --surface-page: var(--color-paper);
+  --surface-image: var(--color-white);
+  --text-primary: var(--color-ink);
+  --text-secondary: var(--color-muted);
+  --border-hairline: var(--color-line);
+  --border-strong: var(--color-ink);
+  --hover-fade: 0.6;
+  --hover-fade-image: 0.8;
+}

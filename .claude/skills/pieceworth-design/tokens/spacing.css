@@ -1,0 +1,11 @@
+:root {
+  --container-max: 42rem;      /* max-w-2xl, 672px */
+  --gutter: 24px;              /* sm:px-6 (20px on mobile) */
+  --gutter-mobile: 20px;
+  --header-pad-y: 32px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
+  --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-14: 56px;
+  --space-16: 64px; --space-24: 96px;
+  --radius: 0;                 /* no rounded corners anywhere */
+  --hairline: 1px;
+}

@@ -1,0 +1,7 @@
+html { background: var(--color-paper); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+body { margin: 0; font-family: var(--font-sans); font-size: var(--text-body); line-height: var(--leading-body); }
+a { color: inherit; text-decoration: none; }
+.pw-fade { transition: opacity .15s; } .pw-fade:hover { opacity: var(--hover-fade); }
+.pw-to-ink:hover { color: var(--color-ink); }
+.pw-underline { text-decoration: underline; text-underline-offset: var(--underline-offset); }
+.pw-prose p { margin: 0; } .pw-prose p + p { margin-top: 0.9rem; }

@@ -1,0 +1,40 @@
+<!-- @dsCard group="Website" viewport="800x900" -->
+<!doctype html><html><head><meta charset="utf-8"><title>Pieceworth · Buy luxury wisely</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+<script>
+window.__pwLoad = (async () => {
+  if ((window.PieceworthDS || Object.keys(window).map(k => { try { const v = window[k]; return v && typeof v === 'object' && v.SiteLayout && v.StoreLink ? v : null; } catch (e) { return null; } }).find(Boolean))) return;
+  const names = ['SiteLayout','Eyebrow','PageTitle','EntryList','StoreGrid','StoreLink','Verdict','GuideStep','DashList','FactList','PickCard'];
+  const PW = {};
+  for (const n of names) {
+    let src = await (await fetch('../../components/core/' + n + '.jsx')).text();
+    src = src.replace(/^import .*$/mg, '').replace(/export function/g, 'function') ;
+    const code = Babel.transform(src, { presets: ['react'] }).code;
+    PW[n] = new Function('React', code + '\nreturn ' + n + ';')(React);
+  }
+  window.PieceworthDS = PW;
+})();
+</script>
+</head><body><div id="root"></div>
+<script type="text/babel">
+(async () => {
+await window.__pwLoad;
+for (const f of ['data.jsx','Screens.jsx']) {
+  const s = await (await fetch(f)).text();
+  new Function(Babel.transform(s, { presets: ['react'] }).code)();
+}
+const { SiteLayout } = window.PW;
+function App() {
+  const [page, setPage] = React.useState({ name: 'home' });
+  const go = (name, arg) => { setPage({ name, arg }); window.scrollTo(0, 0); };
+  const S = window.PWScreens;
+  const map = { home: S.Home, guides: S.Guides, guide: S.Guide, picks: S.Picks, stores: S.Stores, store: S.Store, about: S.About };
+  const Screen = map[page.name] || S.Home;
+  return <SiteLayout onNavigate={(k) => go(k)}><Screen go={go} arg={page.arg} /></SiteLayout>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+})();
+</script></body></html>

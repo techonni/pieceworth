@@ -1,0 +1,23 @@
+:root {
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --weight-serif: 500;
+
+  /* Sizes (px, from the Astro templates) */
+  --text-body: 15px;       --leading-body: 28px;
+  --text-small: 13px;      /* nav, summaries, link rows */
+  --text-caption: 12px;    /* eyebrows, footer, meta */
+  --text-price: 14px;
+  --text-wordmark: 24px;   --tracking-wordmark: 0.025em;
+  --text-hero: 52px;       --text-hero-mobile: 42px; --leading-hero: 1.1;
+  --text-h1: 44px;         --text-h1-mobile: 36px;   --leading-h1: 1.15;
+  --text-h1-page: 40px;    --leading-tight: 1.25;
+  --text-step: 24px;
+  --text-entry: 22px;      --leading-snug: 1.375;
+  --text-verdict: 21px;
+  --text-related: 20px;
+
+  --tracking-eyebrow: 0.18em;
+  --tracking-brand-label: 0.14em;
+  --underline-offset: 4px;
+}

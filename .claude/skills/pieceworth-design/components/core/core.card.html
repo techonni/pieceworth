@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" viewport="700x900" name="Core" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+<script>
+window.__pwLoad = (async () => {
+  if ((window.PieceworthDS || Object.keys(window).map(k => { try { const v = window[k]; return v && typeof v === 'object' && v.SiteLayout && v.StoreLink ? v : null; } catch (e) { return null; } }).find(Boolean))) return;
+  const names = ['SiteLayout','Eyebrow','PageTitle','EntryList','StoreGrid','StoreLink','Verdict','GuideStep','DashList','FactList','PickCard'];
+  const PW = {};
+  for (const n of names) {
+    let src = await (await fetch('../../components/core/' + n + '.jsx')).text();
+    src = src.replace(/^import .*$/mg, '').replace(/export function/g, 'function') ;
+    const code = Babel.transform(src, { presets: ['react'] }).code;
+    PW[n] = new Function('React', code + '\nreturn ' + n + ';')(React);
+  }
+  window.PieceworthDS = PW;
+})();
+</script></head>
+<body style="padding:32px;background:var(--color-paper)"><div id="root"></div>
+<script type="text/babel">
+(async () => { await window.__pwLoad;
+const NS = (window.PieceworthDS || Object.keys(window).map(k => { try { const v = window[k]; return v && typeof v === 'object' && v.SiteLayout && v.StoreLink ? v : null; } catch (e) { return null; } }).find(Boolean)) || {};
+const { Eyebrow, PageTitle, EntryList, StoreGrid, StoreLink, Verdict, GuideStep, DashList, FactList, PickCard } = NS;
+const Gap = ({h=32}) => <div style={{height:h}}/>;
+function Card() {
+  return <div style={{maxWidth:636}}>
+    <Eyebrow as="p">Guide · Updated 28 September 2026</Eyebrow><Gap h={12}/>
+    <PageTitle size="article">Is Italist legit?</PageTitle><Gap/>
+    <Verdict>Yes. Italist is a real store selling authentic pieces from partner boutiques in Italy.</Verdict><Gap/>
+    <ol style={{margin:0,padding:0}}><GuideStep index={1} title="Understand where the item comes from" paragraphs={['Each piece ships from a partner boutique in Italy, not from one warehouse.']}><StoreLink label="Italist: how it works" /></GuideStep></ol><Gap/>
+    <Eyebrow>Common mistakes</Eyebrow><Gap h={12}/><DashList items={['Missing « Final Sale » on the product page','Forgetting duties on returns']}/><Gap/>
+    <Eyebrow>Guides</Eyebrow><Gap h={12}/><EntryList items={[{title:'Where to buy Bottega Veneta for less',summary:'Discounted new pieces from Italian boutiques, or pre-owned.'}]}/><Gap/>
+    <StoreGrid stores={[{name:'Italist',kind:'New designer pieces at a discount'},{name:'Coach',kind:'Accessible luxury'}]}/><Gap/>
+    <FactList facts={[{label:'Ships from',value:'Partner boutiques in Italy'},{label:'Returns',value:'14 days, except Final Sale'}]}/><Gap/>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20}}>
+      <PickCard brand="Bottega Veneta" name="Mini Jodie" detail="Brand new" price="£1,250" was="£2,100" discount={40}/>
+      <PickCard brand="Loewe" name="Puzzle small" detail="With tags" price="£1,480" was="£2,200" discount={33}/>
+      <PickCard brand="Celine" name="Triomphe" detail="Unworn" price="£990" was="£1,500" discount={34}/>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card/>);
+})();
+</script></body></html>
