@@ -12,6 +12,8 @@ export type Brand = {
   summary: string;
   website: string;
   affiliateUrl?: string;
+  // Shown next to the button when the affiliate link opens a regional store.
+  linkNote?: string;
   goodFor: string[];
   watchOut: string[];
   facts: { label: string; value: string }[];
@@ -70,6 +72,7 @@ export const brands: Brand[] = [
     kind: "Pre-owned luxury",
     summary: "A London marketplace for pre-owned and like-new designer pieces, from private sellers and items managed by HEWI.",
     website: "https://www.hardlyeverwornit.com",
+    affiliateUrl: "https://hewi.pxf.io/c/4284523/3912974/53088",
     goodFor: [
       "Sought-after pieces (Hermès, Chanel, Louis Vuitton, Dior) that are sold out or cost much more new.",
       "One-of-a-kind finds: every listing is a single item.",
@@ -101,6 +104,7 @@ export const brands: Brand[] = [
     kind: "Italian designer boutique",
     summary: "A multi-brand fashion boutique based in Cosenza, Italy, with an online store that ships worldwide.",
     website: "https://www.theapartmentcosenza.com",
+    affiliateUrl: "https://TheApartment.onepath.io/c/4284523/4044967/57681",
     goodFor: [
       "Designer labels such as Givenchy, The Attico, Rick Owens and Jil Sander.",
       "Shopping in your own currency: prices in EUR, USD, GBP and six more.",
@@ -123,6 +127,8 @@ export const brands: Brand[] = [
     kind: "Accessible luxury",
     summary: "The New York leather goods house, founded in 1941, known for its bags, small leather goods and accessories.",
     website: "https://www.coach.com",
+    affiliateUrl: "https://coacheu.pxf.io/c/4284523/3935292/52133",
+    linkNote: "Opens Coach's European store (Belgium)",
     goodFor: [
       "A first designer bag in quality leather at a lower price than the big European houses.",
       "Everyday bags and small leather goods.",
