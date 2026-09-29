@@ -7,9 +7,11 @@ interface Props {
   description?: string;
   type?: string;
   jsonLd?: object;
+  // Breadcrumb after « Home »; the last item is the current page (no href).
+  crumbs?: { label: string; href?: string }[];
 }
 
-const { title, description = tagline, type = "website", jsonLd } = Astro.props;
+const { title, description = tagline, type = "website", jsonLd, crumbs = [] } = Astro.props;
 const documentTitle = title ? `${title} · ${siteName}` : `${siteName} · Buy luxury wisely`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/brand/pieceworth-cover.png", Astro.site).href;
@@ -20,7 +22,21 @@ const siteLd = {
     { "@type": "WebSite", name: siteName, url: Astro.site?.href },
   ],
 };
+const trail = crumbs.length ? [{ label: "Home", href: "/" }, ...crumbs] : [];
+const breadcrumbLd = trail.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: trail.map((crumb, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: crumb.label,
+        item: new URL(crumb.href ?? Astro.url.pathname, Astro.site).href,
+      })),
+    }
+  : undefined;
 const nav = [
+  { href: "/shop/", label: "Shop" },
   { href: "/guides/", label: "Guides" },
   { href: "/picks/new-designer-bags-on-sale/", label: "Picks" },
   { href: "/stores/", label: "Stores" },
@@ -50,6 +66,7 @@ const nav = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
+    {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="min-h-screen bg-paper font-sans text-[15px] leading-7 text-ink">
@@ -60,6 +77,20 @@ const nav = [
           {nav.map((item, index) => <>{index > 0 && <span aria-hidden="true" class="text-muted/50">·</span>}<a href={item.href} class="hover:text-ink">{item.label}</a></>)}
         </nav>
       </header>
+      {
+        trail.length > 0 && (
+          <nav aria-label="Breadcrumb" class="text-[12px] text-muted">
+            <ol class="flex flex-wrap gap-x-3">
+              {trail.map((crumb, index) => (
+                <li class="flex gap-3">
+                  {index > 0 && <span aria-hidden="true" class="text-muted/50">·</span>}
+                  {crumb.href ? <a href={crumb.href} class="hover:text-ink">{crumb.label}</a> : <span aria-current="page" class="text-ink">{crumb.label}</span>}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
       <main class="pb-24">
         <slot />
       </main>

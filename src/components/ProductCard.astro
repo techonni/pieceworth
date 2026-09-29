@@ -1,0 +1,28 @@
+---
+// One product: image on the page background (white removed by multiply), brand, name, price. Links to the store.
+import { deepLink, getBrand } from "../lib/content";
+
+interface Props {
+  item: { brand: string; name: string; detail: string; price: number; was: number; discount: number; image: string; url: string };
+  subId: string;
+  currency?: string;
+}
+
+const { item, subId, currency = "GBP" } = Astro.props;
+const hewi = getBrand("hardly-ever-worn-it")!;
+const money = (value: number) =>
+  new Intl.NumberFormat("en-GB", { style: "currency", currency, maximumFractionDigits: 0 }).format(value);
+---
+
+<a href={deepLink(hewi, item.url, subId)} rel="sponsored noopener" target="_blank" class="group block">
+  <div class="aspect-square overflow-hidden">
+    <img src={item.image} alt={`${item.brand} ${item.name}${item.detail ? `, ${item.detail}` : ""}`} loading="lazy" width="640" height="640" class="h-full w-full object-contain mix-blend-multiply transition group-hover:opacity-80" />
+  </div>
+  <p class="mt-3 text-[12px] uppercase tracking-[0.14em]">{item.brand}</p>
+  <p class="mt-1 text-[13px] leading-5 text-muted">{item.name}{item.detail && ` · ${item.detail}`}</p>
+  <p class="mt-2 text-[14px]">
+    {money(item.price)}
+    {item.discount > 0 && <span class="ml-2 text-[12px] text-muted line-through">{money(item.was)}</span>}
+    {item.discount > 0 && <span class="ml-1 text-[12px] text-muted">−{item.discount}%</span>}
+  </p>
+</a>

@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
+import ProductCard from "../components/ProductCard.astro";
 import { brands, guides } from "../lib/content";
+import { count, currency, featured, products } from "../lib/catalog";
 ---
 
 <Base>
@@ -20,8 +22,19 @@ import { brands, guides } from "../lib/content";
     </a>
   </section>
 
+  <section class="mb-16">
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">02 · Shop</h2>
+    <ul class="mt-8 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3">
+      {featured.map((item) => <li><ProductCard item={item} subId="home" currency={currency} /></li>)}
+    </ul>
+    <p class="mt-14 text-center">
+      <a href="/shop/" class="font-serif text-[22px] underline decoration-1 underline-offset-[6px] hover:opacity-60">See the full catalog</a>
+      <span class="mt-2 block text-[12px] uppercase tracking-[0.18em] text-muted">{count(products.length)} pieces · Bags · Wallets · Sunglasses · Belts</span>
+    </p>
+  </section>
+
   <section>
-    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">02 · Guides</h2>
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">03 · Guides</h2>
     <ul class="mt-4 divide-y divide-line border-t border-b border-line">
       {
         guides.map((guide, index) => (
@@ -40,7 +53,7 @@ import { brands, guides } from "../lib/content";
   </section>
 
   <section class="mt-16">
-    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">03 · Stores</h2>
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">04 · Stores</h2>
     <ul class="mt-4 grid gap-x-8 sm:grid-cols-2">
       {
         brands.map((brand) => (

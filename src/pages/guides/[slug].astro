@@ -21,7 +21,7 @@ const jsonLd = {
 };
 ---
 
-<Base title={guide.question} description={guide.summary} type="article" jsonLd={jsonLd}>
+<Base title={guide.question} description={guide.summary} type="article" jsonLd={jsonLd} crumbs={[{ label: "Guides", href: "/guides/" }, { label: guide.question }]}>
   <article class="pt-6">
     <p class="text-[12px] uppercase tracking-[0.18em] text-muted">Guide · Updated {formatDate(guide.updatedOn)}</p>
     <h1 class="mt-4 font-serif text-[36px] leading-[1.15] sm:text-[44px]">{guide.question}</h1>

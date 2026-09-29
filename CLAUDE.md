@@ -29,6 +29,8 @@ The design system lives in `.claude/skills/pieceworth-design/` (skill `piecewort
 ## Recurring work
 
 - Weekly picks: Techonni exports the HEWI « Brand New » catalog from Impact → `python3 scripts/make-picks.py <csv> <YYYY-MM-DD>` → check links and images → publish.
+- Shop (same CSV, same week): `python3 scripts/make-catalog.py <csv> <YYYY-MM-DD>` rebuilds `src/data/catalog.json` (in-stock products only, variants merged) and the 24 home-page pieces. One push = one Cloudflare build (free plan: 500 builds/month, 20,000 files per deploy): batch changes, never push per product.
+- Shop architecture: `/shop/` → categories `/shop/<category>/` and brands `/shop/brands/<brand>/`, 48 products per page (`/2/`, `/3/`…). No page per product: cards link straight to the store with `deepLink()`. Every page except the home passes `crumbs` to `Base.astro` (visible breadcrumb + BreadcrumbList JSON-LD); new pages must too.
 - Pinterest: `node --experimental-strip-types scripts/make-pins.mjs` renders pins in `public/pins/`; the bulk upload CSV goes in `docs/pinterest-agendar-N.csv` and Techonni uploads it (Settings → Bulk create Pins). Start slowly: 2 pins a day.
 
 ## End of session

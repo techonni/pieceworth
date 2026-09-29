@@ -1,0 +1,24 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { count, shopBrands } from "../../../lib/catalog";
+
+const title = "Designer brands on sale";
+const description = "Every designer brand in the shop, from A to Z, with the number of brand-new pieces on sale.";
+---
+
+<Base title={title} description={description} crumbs={[{ label: "Shop", href: "/shop/" }, { label: "Brands" }]}>
+  <h1 class="pt-6 font-serif text-[40px] leading-tight">{title}</h1>
+  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
+  <ul class="mt-8 grid gap-x-8 sm:grid-cols-2">
+    {
+      shopBrands.map((brand) => (
+        <li class="border-b border-line">
+          <a href={`/shop/brands/${brand.slug}/`} class="flex items-baseline justify-between gap-4 py-3 hover:opacity-60">
+            <span>{brand.name}</span>
+            <span class="text-[12px] text-muted">{count(brand.items.length)}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

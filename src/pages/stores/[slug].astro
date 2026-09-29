@@ -11,7 +11,7 @@ const { brand } = Astro.props;
 const brandGuides = guides.filter((guide) => guide.brands.includes(brand.slug));
 ---
 
-<Base title={`${brand.name}: what to know before you buy`} description={brand.summary}>
+<Base title={`${brand.name}: what to know before you buy`} description={brand.summary} crumbs={[{ label: "Stores", href: "/stores/" }, { label: brand.name }]}>
   <p class="pt-6 text-[12px] uppercase tracking-[0.18em] text-muted">{brand.kind}</p>
   <h1 class="mt-4 font-serif text-[40px] leading-tight">{brand.name}</h1>
   <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>

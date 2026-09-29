@@ -1,0 +1,53 @@
+---
+import Base from "../../layouts/Base.astro";
+import ShopNote from "../../components/ShopNote.astro";
+import { formatDate } from "../../lib/content";
+import { categories, checkedOn, count, products, shopBrands } from "../../lib/catalog";
+
+const title = "Brand-new designer pieces, reduced";
+const description = `${count(products.length)} unworn designer bags and accessories with tags, sorted by the biggest discount. Updated weekly.`;
+---
+
+<Base title={title} description={description} crumbs={[{ label: "Shop" }]}>
+  <p class="pt-6 text-[12px] uppercase tracking-[0.18em] text-muted">Shop · Updated {formatDate(checkedOn)}</p>
+  <h1 class="mt-4 font-serif text-[36px] leading-[1.15] sm:text-[44px]">{title}</h1>
+  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
+  <p class="mt-5 text-muted">
+    {count(products.length)} unworn pieces with tags from the « Brand New » section of Hardly Ever Worn It (HEWI),
+    sorted by the biggest discount. Choose a category or a brand.
+  </p>
+  <ShopNote />
+
+  <section class="mt-16">
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">01 · Categories</h2>
+    <ul class="mt-4 divide-y divide-line border-t border-b border-line">
+      {
+        categories.map((category) => (
+          <li>
+            <a href={`/shop/${category.slug}/`} class="flex items-baseline justify-between gap-4 py-5 hover:opacity-60">
+              <span class="font-serif text-[22px] leading-snug">{category.label}</span>
+              <span class="text-[12px] text-muted">{count(category.items.length)}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-16">
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">02 · Brands</h2>
+    <ul class="mt-4 grid gap-x-8 sm:grid-cols-2">
+      {
+        shopBrands.map((brand) => (
+          <li class="border-b border-line">
+            <a href={`/shop/brands/${brand.slug}/`} class="flex items-baseline justify-between gap-4 py-3 hover:opacity-60">
+              <span>{brand.name}</span>
+              <span class="text-[12px] text-muted">{count(brand.items.length)}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-4 text-[13px] text-muted">Brands with fewer than eight pieces appear in the categories.</p>
+  </section>
+</Base>

@@ -1,0 +1,45 @@
+---
+import Base from "../../../../layouts/Base.astro";
+import Pagination from "../../../../components/Pagination.astro";
+import ProductCard from "../../../../components/ProductCard.astro";
+import ShopNote from "../../../../components/ShopNote.astro";
+import { categories, count, currency, paginate, shopBrands } from "../../../../lib/catalog";
+
+export function getStaticPaths() {
+  return shopBrands.flatMap((brand) =>
+    paginate(brand.items, `/shop/brands/${brand.slug}/`).map((page) => ({
+      params: { brand: brand.slug, page: page.param },
+      props: { brand, page },
+    })),
+  );
+}
+
+const { brand, page } = Astro.props;
+const subId = `shop-brand-${brand.slug}`;
+const mix = categories
+  .map((category) => ({ label: category.label, n: brand.items.filter((item) => item.category === category.slug).length }))
+  .filter((category) => category.n > 0);
+const title = page.page > 1 ? `${brand.name} on sale · Page ${page.page}` : `${brand.name} on sale`;
+const description = `${count(brand.items.length)} brand-new ${brand.name} pieces with tags, reduced, from Hardly Ever Worn It. Sorted by the biggest discount.`;
+const crumbs = [
+  { label: "Shop", href: "/shop/" },
+  { label: "Brands", href: "/shop/brands/" },
+  page.page > 1 ? { label: brand.name, href: page.href(1) } : { label: brand.name },
+  ...(page.page > 1 ? [{ label: `Page ${page.page}` }] : []),
+];
+---
+
+<Base title={title} description={description} crumbs={crumbs}>
+  <p class="pt-6 text-[12px] uppercase tracking-[0.18em] text-muted">Shop · {count(brand.items.length)} pieces</p>
+  <h1 class="mt-4 font-serif text-[36px] leading-[1.15] sm:text-[44px]">{brand.name} on sale</h1>
+  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
+  <p class="mt-5 text-muted">Brand new with tags, sorted by the biggest discount.</p>
+  <ShopNote />
+  <p class="mt-8 text-[13px] text-muted">{mix.map((category) => `${category.label} ${category.n}`).join(" · ")}</p>
+
+  <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3">
+    {page.items.map((item) => <li><ProductCard item={item} subId={subId} currency={currency} /></li>)}
+  </ul>
+
+  <Pagination page={page.page} total={page.total} href={page.href} />
+</Base>

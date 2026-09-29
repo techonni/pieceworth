@@ -1,0 +1,11 @@
+---
+// Honesty line under every shop list: affiliate links, currency, duties.
+import { formatDate } from "../lib/content";
+import { checkedOn } from "../lib/catalog";
+---
+
+<p class="mt-3 text-[13px] text-muted">
+  Prices in pounds, as listed on {formatDate(checkedOn)}; stock changes quickly. Product links are affiliate links.
+  HEWI ships from the UK: outside the UK, import duties may be charged on delivery.{" "}
+  <a href="/guides/import-duties-luxury-from-italy-or-uk/" class="underline underline-offset-4 hover:text-ink">How duties work</a>.
+</p>

@@ -1,0 +1,60 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Pagination from "../../../components/Pagination.astro";
+import ProductCard from "../../../components/ProductCard.astro";
+import ShopNote from "../../../components/ShopNote.astro";
+import { brandPage, categories, count, currency, paginate, shopBrands } from "../../../lib/catalog";
+
+export function getStaticPaths() {
+  return categories.flatMap((category) =>
+    paginate(category.items, `/shop/${category.slug}/`).map((page) => ({
+      params: { category: category.slug, page: page.param },
+      props: { category, page },
+    })),
+  );
+}
+
+const { category, page } = Astro.props;
+const subId = `shop-${category.slug}`;
+// Brands with their own page, most pieces first: shortcuts from the category.
+const topBrands = shopBrands
+  .map((brand) => ({ ...brand, here: category.items.filter((item) => item.brand === brand.name).length }))
+  .filter((brand) => brand.here > 0)
+  .sort((a, b) => b.here - a.here)
+  .slice(0, 10);
+const title = page.page > 1 ? `${category.title} on sale · Page ${page.page}` : `${category.title} on sale`;
+const description = `${count(category.items.length)} brand-new ${category.label.toLowerCase()} with tags, reduced, from Hardly Ever Worn It. Sorted by the biggest discount.`;
+const crumbs = [
+  { label: "Shop", href: "/shop/" },
+  page.page > 1 ? { label: category.label, href: page.href(1) } : { label: category.label },
+  ...(page.page > 1 ? [{ label: `Page ${page.page}` }] : []),
+];
+---
+
+<Base title={title} description={description} crumbs={crumbs}>
+  <p class="pt-6 text-[12px] uppercase tracking-[0.18em] text-muted">Shop · {count(category.items.length)} pieces</p>
+  <h1 class="mt-4 font-serif text-[36px] leading-[1.15] sm:text-[44px]">{category.title} on sale</h1>
+  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
+  <p class="mt-5 text-muted">Brand new with tags, sorted by the biggest discount.</p>
+  <ShopNote />
+
+  {
+    page.page === 1 && topBrands.length > 0 && (
+      <p class="mt-8 text-[13px] leading-7 text-muted">
+        <span class="mr-3 text-[12px] uppercase tracking-[0.18em]">By brand</span>
+        {topBrands.map((brand, index) => (
+          <>
+            {index > 0 && <span aria-hidden="true" class="mx-2 text-muted/50">·</span>}
+            <a href={brandPage(brand.name)} class="hover:text-ink">{brand.name}</a>
+          </>
+        ))}
+      </p>
+    )
+  }
+
+  <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3">
+    {page.items.map((item) => <li><ProductCard item={item} subId={subId} currency={currency} /></li>)}
+  </ul>
+
+  <Pagination page={page.page} total={page.total} href={page.href} />
+</Base>
