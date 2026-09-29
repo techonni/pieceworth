@@ -1,50 +1,26 @@
 # Pieceworth · Passagem para a próxima sessão
 
-Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site é em **inglês**.
+Data: 29/09/2026. Responde ao Techonni em **português**, curto e direto; o site é em inglês (EUA) e francês.
 
 ## Estado
 
-- **Online:** https://pieceworth.com (Cloudflare Pages, domínio comprado na Cloudflare).
-- **8 guias:** Italist e HEWI são de confiança?, novo com desconto ou segunda mão, alfândega Itália/Reino Unido, Bottega Veneta mais barato, Italist ou loja oficial, primeira compra em segunda mão, verificar uma mala antes de comprar.
-- **4 lojas** com link de afiliação Impact: Italist, HEWI, The Apartment Cosenza, Coach (loja europeia). Todos os links têm SubId1 = nome da página.
-- **Seleção semanal:** `/picks/new-designer-bags-on-sale/`, 12 malas novas da HEWI (catálogo Impact de 29/09).
-- **Pinterest:** 9 pins minimalistas em `public/pins/`, ficheiro `docs/pinterest-agendar-1.csv` (30/09 a 04/10). Logótipo e capa em `public/brand/`.
-- Impact: site verificado. Cloudflare Web Analytics ativo.
-
-## SEO (2.ª sessão)
-
-- Base.astro: og:image (capa), Twitter cards, JSON-LD Organization/WebSite em todas as páginas. Sitemap, robots, canonical já estavam bem.
-- Guia 9 publicado: « Is The Apartment Cosenza legit? » (envios €25 EUA, DDU, devolução 14 dias, €40 de retorno; factos das páginas oficiais, 29/09). Site tem agora 9 guias.
-- Sitemap submetido no Search Console (29/09).
-- Nota: o site da loja bloqueia bots (403); as políticas leem-se com curl e User-Agent de browser.
-- Próximo guia: Italist (10 %), p. ex. duty-free/tamanhos, ou pre-owned HEWI.
-
-## Brand kit e guia 10 (3.ª sessão)
-
-- Design system (brand kit) guardado no projeto em `.claude/skills/pieceworth-design/`; regras no CLAUDE.md para todos os papéis (dev, design, escrita, SEO, redes sociais).
-- Guia 10 publicado: « Can you cancel an Italist order? Cancellations, sold-out items and sizing » (taxa de 5 % no cancelamento, encomendas canceladas por stock, sem reservas, tamanhos IT/EUA; factos da ajuda oficial Italist, 29/09). Ligado a partir do guia « Is Italist legit? ». Site tem agora 10 guias.
-- Próximo: pin para este guia; guia HEWI segunda mão.
-
-## Loja (catálogo HEWI)
-
-- /shop/ online: 2 269 produtos (malas, carteiras, chapéus, lenços). Filtro de fotos automático (`scripts/photo_check.py`): só produtos de frente, direitos, tamanho homogéneo. Sem óculos, joias, cintos. Home: 10 malas + 4 carteiras.
-- Breadcrumb (visível + JSON-LD) em todas as páginas. Símbolos do brand kit e imagens sem fundo branco (multiply).
-- Atualizar todas as semanas: `.venv/bin/python scripts/make-catalog.py` com o CSV novo (uma só publicação), ver amostra de fotos antes de publicar.
-- Ideias seguintes: filtro mulher/homem, reenviar sitemap no Search Console, pins a partir dos produtos.
+- **Online:** https://pieceworth.com (Cloudflare Pages).
+- **Mudança de rumo (29/09):** o Techonni deixou a Impact. Tudo o que era Impact foi apagado (guias Italist/HEWI/Apartment/Coach, loja, picks, páginas de lojas, scripts, pins). Fica no histórico do git.
+- **Nova rede:** Sovrn Commerce. Script já no site (antes do `</body>`). A Farfetch funciona pela Sovrn. A Sovrn está a avaliar o site (até 5 dias).
+- **Conteúdo:** 22 guias sobre a Farfetch, em inglês (`/guides/`) e francês (`/fr/guides/`), só com factos das páginas oficiais (FAQ e retornos), lidos a 29/09. Notas: `docs/farfetch-facts.md`.
+- **Idiomas:** seletor « US · FR » em cima à direita, hreflang, breadcrumb em todas as páginas.
+- Design system (brand kit) em `.claude/skills/pieceworth-design/`, regras no CLAUDE.md.
 
 ## Pendentes do lado do Techonni
 
-- [ ] Google Search Console: verificar o domínio e submeter https://pieceworth.com/sitemap.xml.
-
-- [ ] Conta Pinterest Business do Pieceworth: perfil (logótipo, bio, site), 2 boards « Luxury shopping guides » e « Designer bags for less ».
-- [x] Tag `p:domain_verify` do Pinterest no site (29/09). Falta o Techonni clicar em « Verify » no Pinterest.
-- [ ] Carregar `pieceworth-pinterest-pins.csv` (Transferências) em Settings → Bulk create Pins.
-- [ ] Todas as semanas: exportar de novo o catálogo HEWI « Brand New » para atualizar a seleção e a loja.
-- [ ] Search Console: reenviar o sitemap (tem agora 333 páginas).
-- [ ] Se existir: exportar o catálogo da Italist (10 %) para uma segunda seleção.
+- [ ] Esperar a aprovação da Sovrn (e-mail).
+- [ ] Search Console: reenviar https://pieceworth.com/sitemap.xml (páginas novas; as antigas dão 404 e desaparecem sozinhas).
+- [ ] Pinterest: os pins antigos apontam para guias apagados. Apagar os pins antigos ou esperar pelos novos.
+- [ ] Skimlinks: voltar a tentar a inscrição (erro do lado deles).
+- [ ] systeme.io: inscrever-se no programa de afiliados (60 % recorrente) para o Zunrel.
 
 ## Próximos passos (Claude)
 
-1. Atualizar a seleção semanal com cada catálogo novo e criar novos pins.
-2. Mais guias centrados na Italist (10 %) e em compradores novos da HEWI (6 %), só com factos verificados.
-3. Mais tarde: versões FR/PT (e então guias Coach, que só paga vendas europeias).
+1. Ler as páginas oficiais da Farfetch que faltam (« Orders & shipping », « Payment & pricing », Access, contacto) no browser, confirmar os factos e acrescentar fontes.
+2. Novos pins Pinterest para os guias Farfetch (brand kit, 1000×1500).
+3. Depois da aprovação Sovrn: ver que outras lojas de luxo funcionam (Mytheresa, SSENSE…) e escrever guias com os mesmos cuidados.

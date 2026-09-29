@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import GuideList from "./GuideList.astro";
+import { pageAlternates, ui, type Lang } from "../lib/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<Base lang={lang} title={t.guidesTitle} description={t.guidesDescription} alternates={pageAlternates("guides")} crumbs={[{ label: t.guides }]}>
+  <h1 class="pt-6 font-serif text-[40px] leading-tight">{t.guidesTitle}</h1>
+  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
+  <div class="mt-8"><GuideList lang={lang} /></div>
+</Base>

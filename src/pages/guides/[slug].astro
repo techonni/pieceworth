@@ -1,103 +1,12 @@
 ---
-import Base from "../../layouts/Base.astro";
-import StoreLink from "../../components/StoreLink.astro";
-import { deepLink, formatDate, getBrand, getGuide, guides } from "../../lib/content";
+import GuidePage from "../../components/GuidePage.astro";
+import { guides } from "../../lib/i18n";
 
 export function getStaticPaths() {
-  return guides.map((guide) => ({ params: { slug: guide.slug } }));
+  return guides.en.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
 }
 
-const guide = getGuide(Astro.params.slug)!;
-const guideBrands = guide.brands.map((slug) => getBrand(slug)!);
-const related = guide.related.map((slug) => getGuide(slug)!);
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: guide.question,
-  description: guide.summary,
-  dateModified: guide.updatedOn,
-  step: guide.steps.map((step, index) => ({ "@type": "HowToStep", position: index + 1, name: step.title, text: step.text })),
-};
+const { guide } = Astro.props;
 ---
 
-<Base title={guide.question} description={guide.summary} type="article" jsonLd={jsonLd} crumbs={[{ label: "Guides", href: "/guides/" }, { label: guide.question }]}>
-  <article class="pt-6">
-    <p class="text-[12px] uppercase tracking-[0.18em] text-muted">Guide · Updated {formatDate(guide.updatedOn)}</p>
-    <h1 class="mt-4 font-serif text-[36px] leading-[1.15] sm:text-[44px]">{guide.question}</h1>
-    <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
-    <p class="mt-5 text-muted">{guide.intro}</p>
-
-    {
-      guide.verdict && (
-        <p class="mt-8 border-l border-ink pl-5 font-serif text-[21px] leading-snug">{guide.verdict}</p>
-      )
-    }
-
-    <ol class="mt-12 space-y-10">
-      {
-        guide.steps.map((step, index) => (
-          <li>
-            <h2 class="font-serif text-[24px] leading-snug">
-              <span class="mr-3 text-muted">{String(index + 1).padStart(2, "0")}</span>
-              {step.title}
-            </h2>
-            <div class="prose-text mt-2">
-              {step.text.split("\n\n").map((paragraph) => <p>{paragraph}</p>)}
-            </div>
-            {step.link && (() => {
-              const brand = getBrand(step.link.brand)!;
-              return (
-                <p class="mt-3 text-[13px]">
-                  <a href={deepLink(brand, step.link.url, `guide-${guide.slug}`)} rel={brand.affiliateUrl ? "sponsored noopener" : "noopener"} target="_blank" class="border-b border-ink pb-0.5 hover:opacity-60">{step.link.label} ↗</a>
-                  {brand.affiliateUrl && <span class="ml-2 text-muted">Affiliate link</span>}
-                </p>
-              );
-            })()}
-          </li>
-        ))
-      }
-    </ol>
-
-    <p aria-hidden="true" class="mt-16 text-center tracking-[1em] text-muted">···</p>
-
-    <section class="mt-14">
-      <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Common mistakes</h2>
-      <ul class="mt-4 space-y-2">
-        {guide.pitfalls.map((pitfall) => <li class="flex gap-3 before:shrink-0 before:text-muted before:content-['—']">{pitfall}</li>)}
-      </ul>
-    </section>
-
-    <section class="mt-14">
-      <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Stores in this guide</h2>
-      <ul class="mt-4 divide-y divide-line border-t border-b border-line">
-        {
-          guideBrands.map((brand) => (
-            <li class="flex flex-wrap items-baseline justify-between gap-3 py-4">
-              <a href={`/stores/${brand.slug}/`} class="hover:opacity-60">{brand.name}</a>
-              <StoreLink brand={brand} label="Visit store" subId={`guide-${guide.slug}`} />
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <section class="mt-14 text-[13px] text-muted">
-      <h2 class="text-[12px] uppercase tracking-[0.18em]">Official sources</h2>
-      <ul class="mt-3 space-y-1">
-        {guide.sources.map((source) => <li><a href={source.url} rel="noopener" target="_blank" class="underline underline-offset-4 hover:text-ink">{source.label}</a> <span aria-hidden="true">↗</span></li>)}
-      </ul>
-    </section>
-
-    {
-      related.length > 0 && (
-        <section class="mt-14">
-          <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Read next</h2>
-          <ul class="mt-3 space-y-2">
-            {related.map((item) => <li class="flex gap-3"><span aria-hidden="true" class="text-muted">—</span><a href={`/guides/${item.slug}/`} class="font-serif text-[20px] hover:opacity-60">{item.question}</a></li>)}
-          </ul>
-        </section>
-      )
-    }
-  </article>
-</Base>
+<GuidePage lang="en" guide={guide} />

@@ -1,9 +1,11 @@
 ## Project
 
-Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wisely, in **English** (US audience first). Owner: Techonni (not a developer; answer him in Portuguese, short and direct). Design is **minimal** by his request: ivory background, serif titles, no decoration (see « Brand kit » below).
+Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wisely. Owner: Techonni (not a developer; answer him in Portuguese, short and direct). Design is **minimal** by his request: ivory background, serif titles, no decoration (see « Brand kit » below).
 
-- Stack: Astro + Tailwind, static. All content in `src/lib/content.ts` (brands and guides).
-- Hosting: **Cloudflare Pages** (project `pieceworth`), deploys `main` on every push. Check changes on https://pieceworth.com (HTTP 200) after pushing; the Cloudflare connector cannot read Pages deployments.
+- Stack: Astro + Tailwind, static. Guides in `src/lib/guides-en.ts` and `src/lib/guides-fr.ts`; languages, paths and UI text in `src/lib/i18n.ts`.
+- Languages: English (US audience) at the root, French (France and Belgium) under `/fr/`. Every guide exists in both, same `id`, local `slug`. The « US · FR » switch at the top right goes to the same page in the other language (hreflang). The French version uses EU facts (duties, Klarna limits), not US ones.
+- Every page except the home passes `crumbs` to `Base.astro` (visible breadcrumb + BreadcrumbList JSON-LD); new pages must too.
+- Hosting: **Cloudflare Pages** (project `pieceworth`), deploys `main` on every push. Check changes on https://pieceworth.com (HTTP 200) after pushing; the Cloudflare connector cannot read Pages deployments. One push = one build (free plan: 500 builds/month): batch changes.
 - Local dev server: `npx astro dev --port 4322 --background`.
 
 ## Brand kit (applies to every role)
@@ -14,26 +16,17 @@ The design system lives in `.claude/skills/pieceworth-design/` (skill `piecewort
 - **Type:** Cormorant Garamond 500 for titles and the wordmark; Geist for body (15px/28px). Eyebrows: 12px uppercase, tracking 0.18em, Muted. Sizes in `tokens/typography.css`.
 - **Layout:** one centered column, max 42rem. No cards, no shadows, 0 radius, no buttons (calls to action are underlined text links with ↗), no icons, no emoji, no fixed elements. Hover = fade to 60%.
 - **Voice:** calm, practical, "you" for the reader, "we" for the site. Headlines are questions the reader would type, in sentence case. Imperative steps. No hype, no exclamation marks. Separators `·`, list marker `—`, « » for store section names, `↗` on outbound links.
-- **Assets:** logo, cover and favicon in `.claude/skills/pieceworth-design/assets/` (live copies in `public/brand/`). Pins are typographic 1000×1500, made by `scripts/make-pins.mjs`.
+- **Assets:** logo, cover and favicon in `.claude/skills/pieceworth-design/assets/` (live copies in `public/brand/`).
 - Reuse the patterns in `components/core/` and `ui_kits/website/` instead of inventing new ones. If the site's styles change (`src/styles/global.css`), update the kit's tokens too.
 
 ## Affiliate rules
 
-- Programs on Impact: Italist 10%, The Apartment 7%, HEWI 6% new / 4% others, Coach EU 6% (EU sales only). Full terms: `docs/impact-terms.md`. Read it before writing money content.
-- Never invent an affiliate link. Links to a precise page use `deepLink()` (Impact `?u=`), always with a SubId1 naming the page.
-- Never publish the brands' promo codes (sales with them pay no commission). Italist pays nothing on items under $250.
-- Images: only Impact catalog images or our own designs. Never copy images from the stores' websites.
-- Product images: never on a white box. Put them on the page background with the CSS class `mix-blend-multiply` (Tailwind): their white background disappears into the Paper color, with no editing of the files (the Impact image stays as supplied). Ask the CDN for enough size (`&width=640` or more) so they stay sharp.
-- Every fact about a store comes from its official pages, with the date checked and the source listed in the guide. Don't write claims you haven't verified.
-
-## Recurring work
-
-- Weekly picks: Techonni exports the HEWI « Brand New » catalog from Impact → `python3 scripts/make-picks.py <csv> <YYYY-MM-DD>` → check links and images → publish.
-- Shop (same CSV, same week): `.venv/bin/python scripts/make-catalog.py <csv> <YYYY-MM-DD>` (first time: `python3 -m venv .venv && .venv/bin/pip install pillow numpy`) rebuilds `src/data/catalog.json` (in-stock products only, variants merged, no sunglasses or glasses anywhere: Techonni finds them cheap-looking; categories bags, wallets, hats, scarves only; black or very dark brown products only, the site must stay black, white and grey) and the home-page pieces (11 bags + 3 wallets, ending on the Givenchy card case). One push = one Cloudflare build (free plan: 500 builds/month, 20,000 files per deploy): batch changes, never push per product.
-- Every partner's products (HEWI now; Italist, The Apartment, Coach when their Impact catalogs arrive) go through the same photo check and the same black / very dark brown rule. Italist: only items of $250 or more (nothing is paid below). Coach EU pays only on EU sales: don't show Coach products to the US audience.
-- Shop photos (Techonni's e-commerce rule): luxury needs **homogeneous** photos. Keep only products shown upright, facing front, at a similar size; drop tiny, angled, edge-to-edge, strap-to-the-side, model or non-white photos, even if it leaves far fewer products. `scripts/photo_check.py` enforces it automatically (thresholds tuned on his examples); after each run, look at a sample of kept photos before publishing. Wallets: black plain leather, flat rectangle only. Scarves: hanging with the loop at the top only. To hide one product by hand, add its URL to `scripts/excluded.txt`.
-- Shop architecture: `/shop/` → categories `/shop/<category>/` and brands `/shop/brands/<brand>/`, 48 products per page (`/2/`, `/3/`…). No page per product: cards link straight to the store with `deepLink()`. Every page except the home passes `crumbs` to `Base.astro` (visible breadcrumb + BreadcrumbList JSON-LD); new pages must too.
-- Pinterest: `node --experimental-strip-types scripts/make-pins.mjs` renders pins in `public/pins/`; the bulk upload CSV goes in `docs/pinterest-agendar-N.csv` and Techonni uploads it (Settings → Bulk create Pins). Start slowly: 2 pins a day.
+- Techonni left Impact (29/09/2026): no Impact links, programs or catalogs anymore. Old Impact work is in git history only.
+- Network: **Sovrn Commerce** (one approval for the whole site, then 50,000+ stores). Its script in `Base.astro` turns plain store links into affiliate links: write normal links to the store (e.g. `https://www.farfetch.com/...`), never invent tracking links. Farfetch is confirmed to work through Sovrn.
+- Store links in guides carry `rel="sponsored"` and the « Affiliate link » mention; the footer and `/affiliate-disclosure/` explain it.
+- Never publish promo codes.
+- Every fact about a store comes from its official pages, with the date checked and the source listed in the guide. Don't write claims you haven't verified. Farfetch facts read so far: `docs/farfetch-facts.md` (farfetch.com blocks scripts: read its pages in the browser).
+- Product images (if a shop comes back): only images the network provides or our own designs; homogeneous photos (upright, front-facing, similar size, black or very dark brown products), set on the page background with `mix-blend-multiply`, never on a white box.
 
 ## End of session
 

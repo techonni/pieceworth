@@ -1,0 +1,12 @@
+---
+import GuidePage from "../../../components/GuidePage.astro";
+import { guides } from "../../../lib/i18n";
+
+export function getStaticPaths() {
+  return guides.fr.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+const { guide } = Astro.props;
+---
+
+<GuidePage lang="fr" guide={guide} />

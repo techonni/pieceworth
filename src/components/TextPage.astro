@@ -1,0 +1,63 @@
+---
+// About and affiliate disclosure pages, in both languages.
+import Base from "../layouts/Base.astro";
+import { pageAlternates, paths, type Lang } from "../lib/i18n";
+
+interface Props {
+  lang: Lang;
+  page: "about" | "disclosure";
+}
+
+const { lang, page } = Astro.props;
+const disclosure = paths.disclosure[lang];
+const text = {
+  about: {
+    en: {
+      title: "About",
+      description: "Why Pieceworth exists and how the guides are written.",
+      body: [
+        "Pieceworth helps you buy designer pieces online without regrets: how the store works, what the price includes, what duties and returns really cost, and what to check before you pay.",
+        "Every guide is based on the store's own official pages, linked at the bottom of each guide, with the date we checked them. Prices and rules change often, so always confirm them on the store before you buy.",
+        `Pieceworth is independent. It isn't owned by or affiliated with the stores it covers, apart from the affiliate links described in our <a href="${disclosure}" class="underline underline-offset-4">affiliate disclosure</a>.`,
+      ],
+    },
+    fr: {
+      title: "À propos",
+      description: "Pourquoi Pieceworth existe et comment les guides sont écrits.",
+      body: [
+        "Pieceworth vous aide à acheter des pièces de créateurs en ligne sans regret : comment fonctionne la boutique, ce que comprend le prix, ce que coûtent vraiment la douane et les retours, et ce qu'il faut vérifier avant de payer.",
+        "Chaque guide s'appuie sur les pages officielles de la boutique, citées en bas de page, avec la date de vérification. Les prix et les règles changent souvent : vérifiez-les toujours sur la boutique avant d'acheter.",
+        `Pieceworth est indépendant. Il n'appartient à aucune des boutiques dont il parle et n'y est lié que par les liens affiliés décrits sur notre page <a href="${disclosure}" class="underline underline-offset-4">liens affiliés</a>.`,
+      ],
+    },
+  },
+  disclosure: {
+    en: {
+      title: "Affiliate disclosure",
+      description: "How Pieceworth earns money through affiliate links.",
+      body: [
+        "Some links on Pieceworth are affiliate links. If you click one and buy something, the store may pay us a commission. It doesn't change the price you pay.",
+        "Links to stores are turned into affiliate links automatically by Sovrn Commerce, and store links in our guides are marked « Affiliate link ». Stores don't pay to be included, don't review our guides before publication, and can't change what we write about them.",
+        "Every guide lists the limits of a store, not just its advantages.",
+      ],
+    },
+    fr: {
+      title: "Liens affiliés",
+      description: "Comment Pieceworth gagne de l'argent grâce aux liens affiliés.",
+      body: [
+        "Certains liens de Pieceworth sont des liens affiliés. Si vous cliquez sur l'un d'eux et achetez, la boutique peut nous verser une commission. Le prix que vous payez ne change pas.",
+        "Les liens vers les boutiques sont transformés automatiquement en liens affiliés par Sovrn Commerce, et ceux de nos guides portent la mention « Lien affilié ». Les boutiques ne paient pas pour être citées, ne relisent pas nos guides avant publication et ne peuvent pas modifier ce que nous écrivons.",
+        "Chaque guide présente les limites d'une boutique, pas seulement ses avantages.",
+      ],
+    },
+  },
+}[page][lang];
+---
+
+<Base lang={lang} title={text.title} description={text.description} alternates={pageAlternates(page)} crumbs={[{ label: text.title }]}>
+  <h1 class="pt-6 font-serif text-[40px] leading-tight">{text.title}</h1>
+  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
+  <div class="prose-text mt-8">
+    {text.body.map((paragraph) => <p set:html={paragraph} />)}
+  </div>
+</Base>

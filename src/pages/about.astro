@@ -1,22 +1,5 @@
 ---
-import Base from "../layouts/Base.astro";
+import TextPage from "../components/TextPage.astro";
 ---
 
-<Base title="About" crumbs={[{ label: "About" }]} description="Why Pieceworth exists and how the guides are written.">
-  <h1 class="pt-6 font-serif text-[40px] leading-tight">About</h1>
-  <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
-  <div class="prose-text mt-8">
-    <p>
-      Pieceworth helps you buy designer pieces online without regrets: which stores to trust, how pre-owned works,
-      what duties and returns really cost, and whether a piece is worth its price.
-    </p>
-    <p>
-      Every guide is based on the stores' own official pages, linked at the bottom of each guide, with the date we
-      checked them. Prices and rules change often, so always confirm them on the store before you buy.
-    </p>
-    <p>
-      Pieceworth is independent. It isn't owned by or affiliated with any of the stores it covers, apart from the
-      affiliate links described in our <a href="/affiliate-disclosure/" class="underline underline-offset-4">affiliate disclosure</a>.
-    </p>
-  </div>
-</Base>
+<TextPage lang="en" page="about" />

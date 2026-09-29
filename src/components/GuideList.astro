@@ -1,0 +1,26 @@
+---
+// Numbered list of guides (home page and guides index).
+import { guidePath, guides, type Lang } from "../lib/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<ul class="divide-y divide-line border-t border-b border-line">
+  {
+    guides[lang].map((guide, index) => (
+      <li>
+        <a href={guidePath(lang, guide)} class="flex gap-5 py-5 hover:opacity-60">
+          <span class="w-5 shrink-0 pt-[9px] text-[12px] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
+          <span>
+            <span class="font-serif text-[22px] leading-snug">{guide.question}</span>
+            <span class="mt-1 block text-[13px] text-muted">{guide.summary}</span>
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,21 +1,5 @@
 ---
-import Base from "../layouts/Base.astro";
+import TextPage from "../components/TextPage.astro";
 ---
 
-<Base title="Affiliate disclosure" crumbs={[{ label: "Affiliate disclosure" }]} description="How Pieceworth earns money through affiliate links.">
-  <h1 class="pt-6 font-serif text-[40px] leading-tight">Affiliate disclosure</h1>
-  <div class="prose-text mt-8">
-    <p>
-      Some links on Pieceworth are affiliate links. If you click one and buy something, the store may pay us a
-      commission. It doesn't change the price you pay.
-    </p>
-    <p>
-      Affiliate links are marked « Affiliate link » next to the button. Stores don't pay to be included, don't review
-      our guides before publication, and can't change what we write about them.
-    </p>
-    <p>
-      We only cover stores we would consider buying from ourselves, and every guide lists the limits of each store,
-      not just its advantages.
-    </p>
-  </div>
-</Base>
+<TextPage lang="en" page="disclosure" />
