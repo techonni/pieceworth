@@ -1,9 +1,9 @@
 """Build the shop catalog (src/data/catalog.json) from the HEWI « Brand New » Impact catalog.
 
-Usage: python3 scripts/make-catalog.py ~/Downloads/Brand-New-Feed_CUSTOM.csv 2026-09-29
+Usage: .venv/bin/python scripts/make-catalog.py ~/Downloads/Brand-New-Feed_CUSTOM.csv 2026-09-29
 
 Keeps in-stock products only (a sold-out piece earns nothing), one entry per product (size variants
-are merged), sorted by discount. Also picks the pieces shown on the home page.
+are merged), with a clean photo (see photo_check.py), sorted by discount. Also picks the pieces shown on the home page.
 Images and links come from the catalog, which Impact provides for affiliates (see make-picks.py).
 """
 
@@ -13,12 +13,16 @@ import sys
 import urllib.parse
 from pathlib import Path
 
+from photo_check import keep_beautiful
+
 # Same list as make-picks.py: brands featured on the home page.
 LUXURY = {
     "Prada", "Miu Miu", "Gucci", "Saint Laurent", "Valentino Garavani", "Burberry", "Balenciaga",
     "Alexander McQueen", "Ferragamo", "Chloé", "Jacquemus", "Givenchy", "Dolce & Gabbana", "Jil Sander",
     "Marni", "Bottega Veneta", "Fendi", "Loewe", "Celine", "Versace", "Stella McCartney", "Bally",
 }
+# Categories shown in the shop: the others had too few good photos to look consistent (Techonni, 29/09).
+SHOP_CATEGORIES = {"bags", "wallets", "hats", "scarves"}
 # Home page mix, in display order (category slug, count): bags and small leather goods only (Techonni, 29/09).
 FEATURED = [("bags", 10), ("wallets", 4)]
 FEATURED_MIN_PRICE = 150  # GBP
@@ -107,7 +111,9 @@ def main() -> None:
                 "url": url,
             }
 
-    items = sorted(products.values(), key=lambda item: (-item["discount"], -item["price"]))
+    items = [item for item in products.values() if item["category"] in SHOP_CATEGORIES]
+    items = keep_beautiful(items)
+    items = sorted(items, key=lambda item: (-item["discount"], -item["price"]))
     for index, item in enumerate(items):
         item["id"] = index
 

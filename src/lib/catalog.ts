@@ -17,11 +17,8 @@ export const MIN_BRAND_PRODUCTS = 8;
 export const categories = [
   { slug: "bags", label: "Bags", title: "Designer bags" },
   { slug: "wallets", label: "Wallets & card holders", title: "Designer wallets and card holders" },
-  { slug: "belts", label: "Belts", title: "Designer belts" },
   { slug: "scarves", label: "Scarves", title: "Designer scarves" },
-  { slug: "jewelry", label: "Jewelry", title: "Designer jewelry" },
   { slug: "hats", label: "Hats", title: "Designer hats" },
-  { slug: "accessories", label: "Other accessories", title: "Other designer accessories" },
 ].map((category) => ({ ...category, items: products.filter((item) => item.category === category.slug) }));
 
 export function slugify(text: string) {
