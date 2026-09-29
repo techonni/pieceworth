@@ -44,6 +44,7 @@ export const brands: Brand[] = [
     kind: "New designer pieces at a discount",
     summary: "An online store that sells brand-new designer fashion shipped directly from partner boutiques in Italy.",
     website: "https://www.italist.com",
+    affiliateUrl: "https://italistinc.pxf.io/c/4284523/3912929/53066?u=https%3A%2F%2Fwww.italist.com%2F",
     goodFor: [
       "Current designer pieces (Prada, Gucci, Saint Laurent, Bottega Veneta…) below full retail price.",
       "Buyers who want duties and taxes shown before paying.",
