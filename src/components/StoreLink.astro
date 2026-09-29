@@ -4,15 +4,17 @@ import { brandLink, type Brand } from "../lib/content";
 interface Props {
   brand: Brand;
   label?: string;
+  // Page name sent to Impact (SubId1), e.g. "guide-is-italist-legit".
+  subId?: string;
 }
 
-const { brand, label = `Visit ${brand.name}` } = Astro.props;
+const { brand, label = `Visit ${brand.name}`, subId } = Astro.props;
 const affiliate = Boolean(brand.affiliateUrl);
 ---
 
 <p class="text-[13px]">
   <a
-    href={brandLink(brand)}
+    href={brandLink(brand, subId)}
     rel={affiliate ? "sponsored noopener" : "noopener"}
     target="_blank"
     class="inline-block border-b border-ink pb-0.5 hover:opacity-60"

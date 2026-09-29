@@ -15,7 +15,7 @@ const brandGuides = guides.filter((guide) => guide.brands.includes(brand.slug));
   <p class="pt-6 text-[12px] uppercase tracking-[0.18em] text-muted">{brand.kind}</p>
   <h1 class="mt-4 font-serif text-[40px] leading-tight">{brand.name}</h1>
   <p class="mt-4 text-muted">{brand.summary}</p>
-  <div class="mt-6"><StoreLink brand={brand} /></div>
+  <div class="mt-6"><StoreLink brand={brand} subId={`store-${brand.slug}`} /></div>
 
   <dl class="mt-12 divide-y divide-line border-t border-b border-line">
     {

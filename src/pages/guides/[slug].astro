@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import StoreLink from "../../components/StoreLink.astro";
-import { formatDate, getBrand, getGuide, guides } from "../../lib/content";
+import { deepLink, formatDate, getBrand, getGuide, guides } from "../../lib/content";
 
 export function getStaticPaths() {
   return guides.map((guide) => ({ params: { slug: guide.slug } }));
@@ -44,6 +44,15 @@ const jsonLd = {
             <div class="prose-text mt-2">
               {step.text.split("\n\n").map((paragraph) => <p>{paragraph}</p>)}
             </div>
+            {step.link && (() => {
+              const brand = getBrand(step.link.brand)!;
+              return (
+                <p class="mt-3 text-[13px]">
+                  <a href={deepLink(brand, step.link.url, `guide-${guide.slug}`)} rel={brand.affiliateUrl ? "sponsored noopener" : "noopener"} target="_blank" class="border-b border-ink pb-0.5 hover:opacity-60">{step.link.label} ↗</a>
+                  {brand.affiliateUrl && <span class="ml-2 text-muted">Affiliate link</span>}
+                </p>
+              );
+            })()}
           </li>
         ))
       }
@@ -63,7 +72,7 @@ const jsonLd = {
           guideBrands.map((brand) => (
             <li class="flex flex-wrap items-baseline justify-between gap-3 py-4">
               <a href={`/stores/${brand.slug}/`} class="hover:opacity-60">{brand.name}</a>
-              <StoreLink brand={brand} label="Visit store" />
+              <StoreLink brand={brand} label="Visit store" subId={`guide-${guide.slug}`} />
             </li>
           ))
         }

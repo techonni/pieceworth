@@ -21,7 +21,8 @@ export type Brand = {
   checkedOn: string;
 };
 
-export type Step = { title: string; text: string };
+// `link`: optional button under a step, to a precise page of a store (tracked deep link).
+export type Step = { title: string; text: string; link?: { brand: string; url: string; label: string } };
 
 export type Guide = {
   slug: string;
@@ -329,6 +330,185 @@ export const guides: Guide[] = [
     ],
     related: ["is-italist-legit", "is-hardly-ever-worn-it-legit"],
   },
+  {
+    slug: "where-to-buy-bottega-veneta-for-less",
+    question: "Where to buy Bottega Veneta for less",
+    summary: "Discounted new pieces from Italian boutiques, or pre-owned: how to pay less for Bottega Veneta without taking risks.",
+    updatedOn: "2026-09-29",
+    intro:
+      "Bottega Veneta is expensive at full price. There are two reliable ways to pay less: brand-new pieces from European boutiques, and pre-owned pieces checked before they're listed.",
+    verdict:
+      "For a new piece at a lower price, start with Italist's Bottega Veneta selection. For an iconic bag that's sold out or too expensive new, look at the pre-owned listings on Hardly Ever Worn It.",
+    steps: [
+      {
+        title: "Know which piece you want",
+        text: "Write down the exact model, color and size before you start: « Cassette », « Jodie », « Andiamo », ankle boots, a belt… Discounts vary a lot from one piece to another, and a clear target keeps you from buying something just because it's reduced.",
+      },
+      {
+        title: "Look at new pieces from Italian boutiques",
+        text: "Italist sells brand-new Bottega Veneta shipped from partner boutiques in Italy. When we checked on 29 September 2026, it listed about 500 Bottega Veneta pieces, many shown 40 to 65% below the crossed-out reference price, mostly clothing, shoes and small accessories. Iconic bags are rarer and less discounted.\n\nPrices are shown in your currency, and duties and taxes are calculated at checkout.",
+        link: { brand: "italist", url: "https://www.italist.com/collections/bottega-veneta", label: "See Bottega Veneta on Italist" },
+      },
+      {
+        title: "Look at pre-owned for bags",
+        text: "For the famous woven bags, pre-owned is often the best route. On Hardly Ever Worn It, every listing is a single item, pre-screened for authenticity before it goes live. Items « Managed by HEWI » are checked in-house and can be returned within 14 days.",
+        link: { brand: "hardly-ever-worn-it", url: "https://hardlyeverwornit.com/collections/bottega-veneta", label: "See pre-owned Bottega Veneta on HEWI" },
+      },
+      {
+        title: "Compare the real total",
+        text: "Add everything before deciding: price, duties and taxes, and the cost of a possible return. Italist shows duties at checkout. HEWI ships from the UK, and outside the UK your customs may charge duties on delivery.",
+      },
+      {
+        title: "Check the condition and the return rules",
+        text: "On a pre-owned piece, zoom in on the corners, handles and inside. On a discounted new piece, look for « Final Sale », which means no return unless it arrives damaged or faulty.",
+      },
+    ],
+    pitfalls: [
+      "Buying a reduced piece you wouldn't have wanted at full price.",
+      "Forgetting duties when a pre-owned piece ships from the UK.",
+      "Buying a Final Sale item without being sure of the size.",
+    ],
+    brands: ["italist", "hardly-ever-worn-it"],
+    sources: [
+      { label: "Italist: Bottega Veneta selection", url: "https://www.italist.com/collections/bottega-veneta" },
+      { label: "Italist: shipping policy", url: "https://italist.com/policies/shipping-policy" },
+      { label: "HEWI help: authentication", url: "https://hewi.gorgias.help/en-US/articles/authentication-367611" },
+      { label: "HEWI help: returns and refunds", url: "https://hewi.gorgias.help/en-US/articles/returns-refunds-367608" },
+    ],
+    related: ["is-italist-legit", "buying-pre-owned-luxury-first-time"],
+  },
+  {
+    slug: "italist-or-the-brand-official-store",
+    question: "Italist or the brand's official store: where should you buy?",
+    summary: "Price, authenticity, delivery and returns compared, so you know when each option makes sense.",
+    updatedOn: "2026-09-29",
+    intro:
+      "The same designer piece can often be bought from the brand's own store or from Italist, which sells it new from Italian boutiques. Neither is always better: it depends on what matters most to you.",
+    steps: [
+      {
+        title: "Price: Italist is often lower",
+        text: "Italist sells current pieces sourced from European boutiques and advertises prices up to 60% below retail. Brand stores usually sell at full price outside their own sale periods. Compare the total at checkout, with duties and taxes, not just the price tag.",
+        link: { brand: "italist", url: "https://www.italist.com/", label: "Compare prices on Italist" },
+      },
+      {
+        title: "Authenticity: both are covered",
+        text: "The brand's store is the original source. Italist says it works only with authorized boutiques carrying official merchandise, and gives a lifetime authenticity guarantee: a 100% refund if an item is ever found inauthentic.",
+      },
+      {
+        title: "Choice: the brand has the full collection",
+        text: "The official store has every size, color and new release. Italist depends on what its partner boutiques have in stock, so the exact piece you want may not be there, or only in some sizes.",
+      },
+      {
+        title: "Delivery: know the timing",
+        text: "Italist ships free and express from Italy, usually in 7 to 14 business days. Brand stores often deliver faster locally. If you need the piece for a date, check the delivery estimate on both before ordering.",
+      },
+      {
+        title: "Returns: read both policies",
+        text: "At Italist, you have 14 days from delivery; return costs and duties are deducted from a card refund, not from store credit, and Final Sale items can't be returned. Brand stores have their own rules, often more generous: read them on the brand's site before you compare.",
+      },
+    ],
+    pitfalls: [
+      "Comparing a discounted price with a full price without adding duties and return costs.",
+      "Choosing the lowest price for a piece you might need to return, when returns cost money.",
+      "Assuming the piece exists in every size on Italist.",
+    ],
+    brands: ["italist"],
+    sources: [
+      { label: "Italist: lifetime authenticity guarantee", url: "https://italist.com/pages/lifetime-authenticity-guarantee" },
+      { label: "Italist: shipping policy", url: "https://italist.com/policies/shipping-policy" },
+      { label: "Italist: returns and refunds", url: "https://italist.gorgias.help/en-US/articles/returns-and-refunds-353682" },
+    ],
+    related: ["is-italist-legit", "import-duties-luxury-from-italy-or-uk"],
+  },
+  {
+    slug: "buying-pre-owned-luxury-first-time",
+    question: "Buying pre-owned luxury for the first time: a simple method",
+    summary: "Where to buy, what to check on the listing, and how to stay protected on your first pre-owned designer piece.",
+    updatedOn: "2026-09-29",
+    intro:
+      "Pre-owned is the easiest way to own a piece from a house like Hermès, Chanel or Louis Vuitton for less, or to find a model that's no longer made. A few habits make the first purchase safe.",
+    verdict:
+      "For a first purchase, choose a marketplace that checks items before listing and holds your payment until you've received the piece, and prefer items it manages itself.",
+    steps: [
+      {
+        title: "Buy on a platform that protects you",
+        text: "Avoid private deals on social media for your first piece. On Hardly Ever Worn It, items are pre-screened for authenticity before listing, and your payment is only released to the seller once you've received the order and are happy with it.",
+        link: { brand: "hardly-ever-worn-it", url: "https://hardlyeverwornit.com/", label: "Browse pre-owned on HEWI" },
+      },
+      {
+        title: "Prefer items managed by the platform",
+        text: "On HEWI, « Managed by HEWI » items are physically checked in-house and can be returned within 14 days if unworn and unused. Items from private sellers are verified from photos, and each seller sets their own return policy.",
+      },
+      {
+        title: "Read the listing like an inspector",
+        text: "Look at every photo: corners, handles, straps, the inside, stamps and hardware. Read the condition description word by word. If a photo is missing, ask for it before buying.",
+      },
+      {
+        title: "Set your full budget",
+        text: "Add shipping and, if the item comes from another country, import duties and taxes. HEWI ships from the UK: outside the UK, your customs may charge duties on delivery, paid by you.",
+      },
+      {
+        title: "Check the piece as soon as it arrives",
+        text: "Compare it with the listing before wearing it or removing any tags. If you doubt its authenticity, contact support immediately. At HEWI, if an item can't be authenticated after investigation, the buyer is refunded in full.",
+      },
+    ],
+    pitfalls: [
+      "Starting with a private seller whose return policy you haven't read.",
+      "Buying jewelry or a watch on HEWI without knowing they can't be returned.",
+      "Wearing the piece before checking it against the listing.",
+    ],
+    brands: ["hardly-ever-worn-it"],
+    sources: [
+      { label: "HEWI: how it works", url: "https://hardlyeverwornit.com/pages/how-it-works" },
+      { label: "HEWI help: how do I know an item is authentic?", url: "https://hewi.gorgias.help/en-US/how-do-i-know-an-item-is-authentic-4411230" },
+      { label: "HEWI help: what if I think an item is not authentic?", url: "https://hewi.gorgias.help/en-US/what-if-i-think-an-item-is-not-authentic-4411231" },
+      { label: "HEWI help: returns and refunds", url: "https://hewi.gorgias.help/en-US/articles/returns-refunds-367608" },
+    ],
+    related: ["check-designer-bag-before-buying-pre-owned", "is-hardly-ever-worn-it-legit"],
+  },
+  {
+    slug: "check-designer-bag-before-buying-pre-owned",
+    question: "How to check a pre-owned designer bag before you buy",
+    summary: "The photos to ask for, the warning signs, and what to do if you still have a doubt.",
+    updatedOn: "2026-09-29",
+    intro:
+      "No checklist replaces a professional authenticator, but a few simple checks weed out most bad listings, and a good platform does the rest.",
+    steps: [
+      {
+        title: "Start with the price",
+        text: "Look up what the same model, in the same condition, sells for on reputable pre-owned sites. A price far below the others is the first warning sign, especially for very popular bags.",
+      },
+      {
+        title: "Ask for the right photos",
+        text: "You need clear, close photos of: the stamp or logo inside, any serial or date code, the hardware (zippers, clasps, engravings), the stitching on the handles and corners, and the lining. A seller who refuses to send them is a warning sign.",
+      },
+      {
+        title: "Compare with official photos",
+        text: "Open the same model on the brand's official website or in a trusted catalog. Compare the shape, the proportions, the logo's font and spacing, the color of the hardware and the stitching. Details that look « almost right » deserve a closer look.",
+      },
+      {
+        title: "Don't rely on the box or receipt alone",
+        text: "Boxes, dust bags, cards and receipts can be sold separately or copied. They're a nice extra, not a proof of authenticity.",
+      },
+      {
+        title: "Let the platform or an expert decide",
+        text: "Buy where items are checked before listing and where you're refunded if a piece can't be authenticated. On HEWI, items managed by HEWI are checked in-house, private-seller items are verified from photos, and some high-value pieces may go to an external authenticator.",
+        link: { brand: "hardly-ever-worn-it", url: "https://hardlyeverwornit.com/", label: "Browse checked pre-owned bags on HEWI" },
+      },
+    ],
+    pitfalls: [
+      "Trusting a price that's too good to be true.",
+      "Treating a receipt or dust bag as proof.",
+      "Paying outside the platform to « save fees »: you lose its protection.",
+    ],
+    brands: ["hardly-ever-worn-it"],
+    sources: [
+      { label: "HEWI help: authentication", url: "https://hewi.gorgias.help/en-US/articles/authentication-367611" },
+      { label: "HEWI help: how do I know an item is authentic?", url: "https://hewi.gorgias.help/en-US/how-do-i-know-an-item-is-authentic-4411230" },
+      { label: "HEWI help: what if I think an item is not authentic?", url: "https://hewi.gorgias.help/en-US/what-if-i-think-an-item-is-not-authentic-4411231" },
+    ],
+    related: ["buying-pre-owned-luxury-first-time", "is-hardly-ever-worn-it-legit"],
+  },
 ];
 
 export function getBrand(slug: string) {
@@ -339,8 +519,20 @@ export function getGuide(slug: string) {
   return guides.find((guide) => guide.slug === slug);
 }
 
-export function brandLink(brand: Brand) {
-  return brand.affiliateUrl ?? brand.website;
+// `subId` (page where the link was clicked) shows up in Impact reports as SubId1.
+export function brandLink(brand: Brand, subId?: string) {
+  if (!brand.affiliateUrl) return brand.website;
+  if (!subId) return brand.affiliateUrl;
+  const separator = brand.affiliateUrl.includes("?") ? "&" : "?";
+  return `${brand.affiliateUrl}${separator}subId1=${encodeURIComponent(subId)}`;
+}
+
+// Deep link to any page of a store through Impact (`u` parameter), with the page name as SubId1.
+export function deepLink(brand: Brand, url: string, subId?: string) {
+  if (!brand.affiliateUrl) return url;
+  const base = brand.affiliateUrl.split("?")[0];
+  const sub = subId ? `&subId1=${encodeURIComponent(subId)}` : "";
+  return `${base}?u=${encodeURIComponent(url)}${sub}`;
 }
 
 export function formatDate(iso: string) {
