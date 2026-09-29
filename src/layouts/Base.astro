@@ -56,8 +56,8 @@ const nav = [
     <div class="mx-auto max-w-2xl px-5 sm:px-6">
       <header class="flex items-baseline justify-between py-8">
         <a href="/" class="font-serif text-2xl tracking-wide">{siteName}</a>
-        <nav class="flex gap-5 text-[13px] text-muted">
-          {nav.map((item) => <a href={item.href} class="hover:text-ink">{item.label}</a>)}
+        <nav class="flex gap-3 text-[13px] text-muted">
+          {nav.map((item, index) => <>{index > 0 && <span aria-hidden="true" class="text-muted/50">·</span>}<a href={item.href} class="hover:text-ink">{item.label}</a></>)}
         </nav>
       </header>
       <main class="pb-24">

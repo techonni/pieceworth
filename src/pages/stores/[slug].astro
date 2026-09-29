@@ -32,11 +32,11 @@ const brandGuides = guides.filter((guide) => guide.brands.includes(brand.slug));
   <div class="mt-12 grid gap-10 sm:grid-cols-2">
     <section>
       <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Good for</h2>
-      <ul class="mt-3 space-y-2">{brand.goodFor.map((item) => <li>{item}</li>)}</ul>
+      <ul class="mt-3 space-y-2">{brand.goodFor.map((item) => <li class="flex gap-3 before:shrink-0 before:text-muted before:content-['—']">{item}</li>)}</ul>
     </section>
     <section>
       <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Watch out</h2>
-      <ul class="mt-3 space-y-2">{brand.watchOut.map((item) => <li>{item}</li>)}</ul>
+      <ul class="mt-3 space-y-2">{brand.watchOut.map((item) => <li class="flex gap-3 before:shrink-0 before:text-muted before:content-['—']">{item}</li>)}</ul>
     </section>
   </div>
 
@@ -45,7 +45,7 @@ const brandGuides = guides.filter((guide) => guide.brands.includes(brand.slug));
       <section class="mt-14">
         <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Guides</h2>
         <ul class="mt-3 space-y-2">
-          {brandGuides.map((guide) => <li><a href={`/guides/${guide.slug}/`} class="font-serif text-[20px] hover:opacity-60">{guide.question}</a></li>)}
+          {brandGuides.map((guide) => <li class="flex gap-3"><span aria-hidden="true" class="text-muted">—</span><a href={`/guides/${guide.slug}/`} class="font-serif text-[20px] hover:opacity-60">{guide.question}</a></li>)}
         </ul>
       </section>
     )
@@ -56,7 +56,7 @@ const brandGuides = guides.filter((guide) => guide.brands.includes(brand.slug));
     {brand.sources.map((source, index) => (
       <>
         {index > 0 && ", "}
-        <a href={source.url} rel="noopener" target="_blank" class="underline underline-offset-4 hover:text-ink">{source.label}</a>
+        <a href={source.url} rel="noopener" target="_blank" class="underline underline-offset-4 hover:text-ink">{source.label} ↗</a>
       </>
     ))}. Rules change: check them again before you buy.
   </p>

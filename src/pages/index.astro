@@ -13,7 +13,7 @@ import { brands, guides } from "../lib/content";
   </section>
 
   <section class="mb-16">
-    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">This week</h2>
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">01 · This week</h2>
     <a href="/picks/new-designer-bags-on-sale/" class="mt-4 block border-t border-b border-line py-5 hover:opacity-60">
       <span class="font-serif text-[22px] leading-snug">Brand-new designer bags on sale this week</span>
       <span class="mt-1 block text-[13px] text-muted">Twelve unworn pieces with tags, reduced by at least 30%.</span>
@@ -21,14 +21,17 @@ import { brands, guides } from "../lib/content";
   </section>
 
   <section>
-    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Guides</h2>
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">02 · Guides</h2>
     <ul class="mt-4 divide-y divide-line border-t border-b border-line">
       {
-        guides.map((guide) => (
+        guides.map((guide, index) => (
           <li>
-            <a href={`/guides/${guide.slug}/`} class="block py-5 hover:opacity-60">
-              <span class="font-serif text-[22px] leading-snug">{guide.question}</span>
-              <span class="mt-1 block text-[13px] text-muted">{guide.summary}</span>
+            <a href={`/guides/${guide.slug}/`} class="flex gap-5 py-5 hover:opacity-60">
+              <span class="w-5 shrink-0 pt-[9px] text-[12px] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
+              <span>
+                <span class="font-serif text-[22px] leading-snug">{guide.question}</span>
+                <span class="mt-1 block text-[13px] text-muted">{guide.summary}</span>
+              </span>
             </a>
           </li>
         ))
@@ -37,7 +40,7 @@ import { brands, guides } from "../lib/content";
   </section>
 
   <section class="mt-16">
-    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">Stores</h2>
+    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">03 · Stores</h2>
     <ul class="mt-4 grid gap-x-8 sm:grid-cols-2">
       {
         brands.map((brand) => (
