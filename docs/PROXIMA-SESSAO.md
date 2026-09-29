@@ -14,14 +14,13 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 ## Pendentes do lado do Techonni
 
 - [ ] Conta Pinterest Business do Pieceworth: perfil (logótipo, bio, site), 2 boards « Luxury shopping guides » e « Designer bags for less ».
-- [ ] Mandar a tag `p:domain_verify` do Pinterest → eu ponho-a no site → ele clica em « Verify ».
+- [x] Tag `p:domain_verify` do Pinterest no site (29/09). Falta o Techonni clicar em « Verify » no Pinterest.
 - [ ] Carregar `pieceworth-pinterest-pins.csv` (Transferências) em Settings → Bulk create Pins.
 - [ ] Todas as semanas: exportar de novo o catálogo HEWI « Brand New » para atualizar a seleção.
 - [ ] Se existir: exportar o catálogo da Italist (10 %) para uma segunda seleção.
 
 ## Próximos passos (Claude)
 
-1. Pôr a tag do Pinterest no site assim que o Techonni a mandar.
-2. Atualizar a seleção semanal com cada catálogo novo e criar novos pins.
-3. Mais guias centrados na Italist (10 %) e em compradores novos da HEWI (6 %), só com factos verificados.
-4. Mais tarde: versões FR/PT (e então guias Coach, que só paga vendas europeias).
+1. Atualizar a seleção semanal com cada catálogo novo e criar novos pins.
+2. Mais guias centrados na Italist (10 %) e em compradores novos da HEWI (6 %), só com factos verificados.
+3. Mais tarde: versões FR/PT (e então guias Coach, que só paga vendas europeias).
