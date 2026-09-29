@@ -14,7 +14,10 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 ## SEO (2.ª sessão)
 
 - Base.astro: og:image (capa), Twitter cards, JSON-LD Organization/WebSite em todas as páginas. Sitemap, robots, canonical já estavam bem.
-- Próximo guia sugerido: « Is The Apartment Cosenza legit? » ou « Is Coach Europe worth it? » (verificar factos nas páginas oficiais primeiro).
+- Guia 9 publicado: « Is The Apartment Cosenza legit? » (envios €25 EUA, DDU, devolução 14 dias, €40 de retorno; factos das páginas oficiais, 29/09). Site tem agora 9 guias.
+- Sitemap submetido no Search Console (29/09).
+- Nota: o site da loja bloqueia bots (403); as políticas leem-se com curl e User-Agent de browser.
+- Próximo guia: Italist (10 %), p. ex. duty-free/tamanhos, ou pre-owned HEWI.
 
 ## Pendentes do lado do Techonni
 

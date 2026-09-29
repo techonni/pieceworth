@@ -509,6 +509,56 @@ export const guides: Guide[] = [
     ],
     related: ["buying-pre-owned-luxury-first-time", "is-hardly-ever-worn-it-legit"],
   },
+  {
+    slug: "is-the-apartment-cosenza-legit",
+    question: "Is The Apartment Cosenza legit? Shipping, duties and returns for US buyers",
+    summary: "What to know before ordering from The Apartment Cosenza in the US: shipping cost, import duties, the 14-day return rule and what returning costs.",
+    updatedOn: "2026-09-29",
+    intro:
+      "The Apartment Cosenza is a multi-brand designer boutique in Cosenza, Italy, with an online store that ships worldwide with DHL. The company details (The Apartment S.R.L., Via Cattaneo 80/A, Cosenza) are published in the store's footer. Here is what its own policy pages say about shipping to the United States, so you can see the full cost before you order.",
+    verdict:
+      "It is a real Italian boutique with clear written policies. For US buyers the two things to plan for are import duties paid on delivery and a return that costs about €40 in shipping.",
+    steps: [
+      {
+        title: "Check who you are buying from",
+        text: "The store's footer names the company, The Apartment S.R.L., with its address in Cosenza, Italy and its VAT number, and lists a customer service email and WhatsApp number, open Monday to Friday, 9:00 to 18:00. A named company with contact details and written policies is the minimum to look for before paying any online boutique.",
+      },
+      {
+        title: "Add the shipping cost",
+        text: "Shipping to the United States and Canada is a flat €25 express fee on every order, sent with DHL. Orders ship Monday to Friday, and only after payment is received. Every shipment is insured against theft and accidental damage until you receive it and acknowledge it in writing.",
+        link: { brand: "the-apartment-cosenza", url: "https://www.theapartmentcosenza.com/en-US/policy/condshp", label: "Read the shipping policy" },
+      },
+      {
+        title: "Plan for import duties",
+        text: "Orders sent outside the EU and the UK are shipped DDU (Delivery Duty Unpaid). Customs duties and import taxes depend on the type and value of the product, and you pay them to the courier on delivery. Unlike stores that show duties at checkout, here the price you pay online is not the final cost. Check the tax rules for your own order before you buy.",
+      },
+      {
+        title: "Know the 14-day return rule",
+        text: "Buyers who count as consumers under Italian law can withdraw from the purchase within 14 days of receiving the product, without giving a reason. You then have 14 more days from your withdrawal notice to send it back. The item must come back unworn, in its original packaging, with all tags, labels and accessories, and in perfect resale condition. Trying it on is fine; visible use is not.",
+        link: { brand: "the-apartment-cosenza", url: "https://www.theapartmentcosenza.com/en-US/policy/condret", label: "Read the return conditions" },
+      },
+      {
+        title: "Count what a return costs",
+        text: "Unless the item is defective or the store made a shipping error, you pay the return: shipping, taxes, fees and any customs charges. The store's own courier rate for the United States is €40, and incidental charges are deducted from your refund. If you choose another carrier, you also pay a 10% charge on the value of the returned products. So a return from the US is a real cost, not a free trial.",
+      },
+      {
+        title: "Start the return through customer service",
+        text: "Send the online withdrawal form first and wait for the waybill. Customer service sends the label and, for non-EU countries, the customs documents to give the courier. Write the order number on the outside of the package. The store refunds the amount due within 14 days of receiving the return and checking it.",
+      },
+    ],
+    pitfalls: [
+      "Comparing the online price with a US store without adding duties paid on delivery.",
+      "Ordering a size you are unsure about: a return costs about €40 plus any charges.",
+      "Wearing the item outside or removing tags before deciding: the refund needs perfect resale condition.",
+      "Sending the return with your own carrier: a 10% charge applies on top of the shipping.",
+    ],
+    brands: ["the-apartment-cosenza"],
+    sources: [
+      { label: "The Apartment Cosenza: shipping", url: "https://www.theapartmentcosenza.com/en-US/policy/condshp" },
+      { label: "The Apartment Cosenza: return conditions", url: "https://www.theapartmentcosenza.com/en-US/policy/condret" },
+    ],
+    related: ["import-duties-luxury-from-italy-or-uk", "italist-or-the-brand-official-store"],
+  },
 ];
 
 export function getBrand(slug: string) {
