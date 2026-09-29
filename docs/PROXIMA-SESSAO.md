@@ -27,9 +27,9 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 
 ## Loja (catálogo HEWI)
 
-- /shop/ online: 6 224 produtos em stock (de 17 080 linhas: esgotados e variantes de tamanho retirados), 8 categorias, 103 marcas, 48 por página, 334 páginas no total. 24 produtos na home + « See the full catalog ».
+- /shop/ online: 2 269 produtos (malas, carteiras, chapéus, lenços). Filtro de fotos automático (`scripts/photo_check.py`): só produtos de frente, direitos, tamanho homogéneo. Sem óculos, joias, cintos. Home: 10 malas + 4 carteiras.
 - Breadcrumb (visível + JSON-LD) em todas as páginas. Símbolos do brand kit e imagens sem fundo branco (multiply).
-- Atualizar todas as semanas: `make-catalog.py` com o CSV novo (uma só publicação).
+- Atualizar todas as semanas: `.venv/bin/python scripts/make-catalog.py` com o CSV novo (uma só publicação), ver amostra de fotos antes de publicar.
 - Ideias seguintes: filtro mulher/homem, reenviar sitemap no Search Console, pins a partir dos produtos.
 
 ## Pendentes do lado do Techonni
