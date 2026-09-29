@@ -1,6 +1,6 @@
 ## Project
 
-Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wisely, in **English** (US audience first). Owner: Techonni (not a developer; answer him in Portuguese, simply). Design is **minimal** by his request: ivory background, serif titles, no decoration (see « Brand kit » below).
+Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wisely, in **English** (US audience first). Owner: Techonni (not a developer; answer him in Portuguese, short and direct). Design is **minimal** by his request: ivory background, serif titles, no decoration (see « Brand kit » below).
 
 - Stack: Astro + Tailwind, static. All content in `src/lib/content.ts` (brands and guides).
 - Hosting: **Cloudflare Pages** (project `pieceworth`), deploys `main` on every push. Check changes on https://pieceworth.com (HTTP 200) after pushing; the Cloudflare connector cannot read Pages deployments.
