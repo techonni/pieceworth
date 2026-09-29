@@ -25,6 +25,13 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 - Guia 10 publicado: « Can you cancel an Italist order? Cancellations, sold-out items and sizing » (taxa de 5 % no cancelamento, encomendas canceladas por stock, sem reservas, tamanhos IT/EUA; factos da ajuda oficial Italist, 29/09). Ligado a partir do guia « Is Italist legit? ». Site tem agora 10 guias.
 - Próximo: pin para este guia; guia HEWI segunda mão.
 
+## Loja (catálogo HEWI)
+
+- /shop/ online: 6 224 produtos em stock (de 17 080 linhas: esgotados e variantes de tamanho retirados), 8 categorias, 103 marcas, 48 por página, 334 páginas no total. 24 produtos na home + « See the full catalog ».
+- Breadcrumb (visível + JSON-LD) em todas as páginas. Símbolos do brand kit e imagens sem fundo branco (multiply).
+- Atualizar todas as semanas: `make-catalog.py` com o CSV novo (uma só publicação).
+- Ideias seguintes: filtro mulher/homem, reenviar sitemap no Search Console, pins a partir dos produtos.
+
 ## Pendentes do lado do Techonni
 
 - [ ] Google Search Console: verificar o domínio e submeter https://pieceworth.com/sitemap.xml.
@@ -32,7 +39,8 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 - [ ] Conta Pinterest Business do Pieceworth: perfil (logótipo, bio, site), 2 boards « Luxury shopping guides » e « Designer bags for less ».
 - [x] Tag `p:domain_verify` do Pinterest no site (29/09). Falta o Techonni clicar em « Verify » no Pinterest.
 - [ ] Carregar `pieceworth-pinterest-pins.csv` (Transferências) em Settings → Bulk create Pins.
-- [ ] Todas as semanas: exportar de novo o catálogo HEWI « Brand New » para atualizar a seleção.
+- [ ] Todas as semanas: exportar de novo o catálogo HEWI « Brand New » para atualizar a seleção e a loja.
+- [ ] Search Console: reenviar o sitemap (tem agora 333 páginas).
 - [ ] Se existir: exportar o catálogo da Italist (10 %) para uma segunda seleção.
 
 ## Próximos passos (Claude)
