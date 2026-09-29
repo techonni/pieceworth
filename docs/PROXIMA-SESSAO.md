@@ -11,7 +11,14 @@ Data: 29/09/2026 (1.ª sessão). Responde ao Techonni em **português**; o site 
 - **Pinterest:** 9 pins minimalistas em `public/pins/`, ficheiro `docs/pinterest-agendar-1.csv` (30/09 a 04/10). Logótipo e capa em `public/brand/`.
 - Impact: site verificado. Cloudflare Web Analytics ativo.
 
+## SEO (2.ª sessão)
+
+- Base.astro: og:image (capa), Twitter cards, JSON-LD Organization/WebSite em todas as páginas. Sitemap, robots, canonical já estavam bem.
+- Próximo guia sugerido: « Is The Apartment Cosenza legit? » ou « Is Coach Europe worth it? » (verificar factos nas páginas oficiais primeiro).
+
 ## Pendentes do lado do Techonni
+
+- [ ] Google Search Console: verificar o domínio e submeter https://pieceworth.com/sitemap.xml.
 
 - [ ] Conta Pinterest Business do Pieceworth: perfil (logótipo, bio, site), 2 boards « Luxury shopping guides » e « Designer bags for less ».
 - [x] Tag `p:domain_verify` do Pinterest no site (29/09). Falta o Techonni clicar em « Verify » no Pinterest.

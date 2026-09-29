@@ -12,6 +12,14 @@ interface Props {
 const { title, description = tagline, type = "website", jsonLd } = Astro.props;
 const documentTitle = title ? `${title} · ${siteName}` : `${siteName} · Buy luxury wisely`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/brand/pieceworth-cover.png", Astro.site).href;
+const siteLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", name: siteName, url: Astro.site?.href, logo: new URL("/brand/pieceworth-logo.png", Astro.site).href },
+    { "@type": "WebSite", name: siteName, url: Astro.site?.href },
+  ],
+};
 const nav = [
   { href: "/guides/", label: "Guides" },
   { href: "/picks/new-designer-bags-on-sale/", label: "Picks" },
@@ -36,6 +44,12 @@ const nav = [
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="min-h-screen bg-paper font-sans text-[15px] leading-7 text-ink">
