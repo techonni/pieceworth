@@ -1,0 +1,55 @@
+---
+import Base from "../../layouts/Base.astro";
+import picks from "../../data/picks-hewi-new-bags.json";
+import { deepLink, formatDate, getBrand } from "../../lib/content";
+
+// Weekly selection built by scripts/make-picks.py from the HEWI « Brand New » Impact catalog.
+const hewi = getBrand("hardly-ever-worn-it")!;
+const subId = "picks-new-designer-bags-on-sale";
+const money = (value: number, currency: string) =>
+  new Intl.NumberFormat("en-GB", { style: "currency", currency, maximumFractionDigits: 0 }).format(value);
+const title = "Brand-new designer bags on sale this week";
+const description = "A short, hand-picked selection of brand-new designer bags reduced on Hardly Ever Worn It, updated weekly.";
+---
+
+<Base title={title} description={description}>
+  <p class="pt-6 text-[12px] uppercase tracking-[0.18em] text-muted">Picks · {formatDate(picks.checkedOn)}</p>
+  <h1 class="mt-4 font-serif text-[36px] leading-[1.15] sm:text-[44px]">{title}</h1>
+  <p class="mt-5 text-muted">
+    Twelve bags from the « Brand New » section of Hardly Ever Worn It: unworn pieces with tags, reduced by at
+    least 30%. Prices are in pounds, as listed on {formatDate(picks.checkedOn)}. Stock is one piece at a time, so
+    some may already be gone.
+  </p>
+  <p class="mt-3 text-[13px] text-muted">
+    Product links are affiliate links. HEWI ships from the UK: outside the UK, import duties may be charged on
+    delivery. <a href="/guides/import-duties-luxury-from-italy-or-uk/" class="underline underline-offset-4 hover:text-ink">How duties work</a>.
+  </p>
+
+  <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3">
+    {
+      picks.items.map((item) => (
+        <li>
+          <a href={deepLink(hewi, item.url, subId)} rel="sponsored noopener" target="_blank" class="group block">
+            <div class="aspect-square overflow-hidden bg-white">
+              <img src={item.image} alt={`${item.brand} ${item.name}, ${item.detail}`} loading="lazy" width="640" height="640" class="h-full w-full object-contain transition group-hover:opacity-80" />
+            </div>
+            <p class="mt-3 text-[12px] uppercase tracking-[0.14em]">{item.brand}</p>
+            <p class="mt-1 text-[13px] leading-5 text-muted">{item.name} · {item.detail}</p>
+            <p class="mt-2 text-[14px]">
+              {money(item.price, item.currency)}
+              <span class="ml-2 text-[12px] text-muted line-through">{money(item.was, item.currency)}</span>
+              <span class="ml-1 text-[12px] text-muted">−{item.discount}%</span>
+            </p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <section class="mt-16 border-t border-line pt-8 text-[13px] text-muted">
+    <p>
+      New to buying on HEWI? Read <a href="/guides/is-hardly-ever-worn-it-legit/" class="underline underline-offset-4 hover:text-ink">how HEWI works</a>
+      and <a href="/guides/buying-pre-owned-luxury-first-time/" class="underline underline-offset-4 hover:text-ink">our first-purchase method</a> before you order.
+    </p>
+  </section>
+</Base>

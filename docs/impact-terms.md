@@ -18,3 +18,8 @@ The contracts say nothing about images. Rule for the site: only use creatives an
 - Never publish the brands' promo codes: sales with them pay nothing.
 - HEWI pays more for new customers: target first-time pre-owned buyers.
 - Coach only pays on European sales: no Coach-focused guides for the US audience; revisit with FR/PT versions.
+
+## HEWI product catalog (Brand New feed)
+- Export from Impact as CSV (`Brand-New-Feed_CUSTOM.csv`), then: `python3 scripts/make-picks.py <csv> <YYYY-MM-DD>` → `src/data/picks-hewi-new-bags.json` → page `/picks/new-designer-bags-on-sale/`. Refresh weekly.
+- The catalog's own tracking links (ad 4026132, hewi-shop.myshopify.com) end on an Impact « Dead End » page, so the site rebuilds tracked links to hardlyeverwornit.com with the working HEWI link (ad 3912974, `?u=`).
+- Images: catalog images provided through Impact, hotlinked from the Shopify CDN (`&width=640`).

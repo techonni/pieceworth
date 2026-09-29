@@ -6,6 +6,7 @@ export const GET: APIRoute = ({ site }) => {
     "/",
     "/guides/",
     "/stores/",
+    "/picks/new-designer-bags-on-sale/",
     "/about/",
     "/affiliate-disclosure/",
     ...guides.map((guide) => `/guides/${guide.slug}/`),
