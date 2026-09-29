@@ -10,7 +10,7 @@ Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wis
 
 The design system lives in `.claude/skills/pieceworth-design/` (skill `pieceworth-design`). Anyone working on Pieceworth, whatever the task (developer, designer, writer, SEO, social media, email, ads), must follow it. Load the skill before producing anything visible: pages, components, pins, social images, emails, mockups, decks, copy.
 
-- **Colors:** only Paper `#fcfcfa` (background), Ink `#161616` (text), Muted `#75726c` (secondary), Line `#e8e6e1` (1px hairlines). White only behind product images. No accent, no red/green, no gradients, no textures.
+- **Colors:** only Paper `#fcfcfa` (background), Ink `#161616` (text), Muted `#75726c` (secondary), Line `#e8e6e1` (1px hairlines). No white boxes. No accent, no red/green, no gradients, no textures.
 - **Type:** Cormorant Garamond 500 for titles and the wordmark; Geist for body (15px/28px). Eyebrows: 12px uppercase, tracking 0.18em, Muted. Sizes in `tokens/typography.css`.
 - **Layout:** one centered column, max 42rem. No cards, no shadows, 0 radius, no buttons (calls to action are underlined text links with ↗), no icons, no emoji, no fixed elements. Hover = fade to 60%.
 - **Voice:** calm, practical, "you" for the reader, "we" for the site. Headlines are questions the reader would type, in sentence case. Imperative steps. No hype, no exclamation marks. Separators `·`, list marker `—`, « » for store section names, `↗` on outbound links.
@@ -23,6 +23,7 @@ The design system lives in `.claude/skills/pieceworth-design/` (skill `piecewort
 - Never invent an affiliate link. Links to a precise page use `deepLink()` (Impact `?u=`), always with a SubId1 naming the page.
 - Never publish the brands' promo codes (sales with them pay no commission). Italist pays nothing on items under $250.
 - Images: only Impact catalog images or our own designs. Never copy images from the stores' websites.
+- Product images: never on a white box. Put them on the page background with the CSS class `mix-blend-multiply` (Tailwind): their white background disappears into the Paper color, with no editing of the files (the Impact image stays as supplied). Ask the CDN for enough size (`&width=640` or more) so they stay sharp.
 - Every fact about a store comes from its official pages, with the date checked and the source listed in the guide. Don't write claims you haven't verified.
 
 ## Recurring work

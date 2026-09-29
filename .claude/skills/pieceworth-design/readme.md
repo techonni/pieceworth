@@ -25,12 +25,12 @@ The source has no component library (one Astro component, `StoreLink`); the othe
 - Rules: never publish promo codes; never invent affiliate links; only verified facts.
 
 ## Visual foundations
-- **Palette:** four colors only — Paper `#fcfcfa`, Ink `#161616`, Muted `#75726c`, Line `#e8e6e1`. Product image wells are pure white. No accent color, no semantic red/green.
+- **Palette:** four colors only — Paper `#fcfcfa`, Ink `#161616`, Muted `#75726c`, Line `#e8e6e1`. Product images sit directly on Paper with `mix-blend-mode: multiply`, so their white background disappears (no white wells). No accent color, no semantic red/green.
 - **Type:** Cormorant Garamond 500 for all headings and the wordmark (hero 52/1.1, article 44/1.15, page 40/1.25, step 24, entry 22, verdict 21, related 20). Geist for body 15/28, small 13, caption 12. Eyebrows: 12px uppercase, tracking 0.18em, muted. Product brand labels: 12px uppercase 0.14em ink. Pins use italic Cormorant for emphasis words.
 - **Layout:** one centered column, max-width 42rem (672px), 20px/24px side padding. Header baseline-aligned, 32px vertical padding. Sections 56–64px apart; guide steps 40px apart. Main has 96px bottom padding.
 - **Dividers:** 1px Line hairlines above/below lists and between rows; 1px Ink only for the link underline and the verdict's left rule.
 - **Backgrounds:** flat Paper. No images, gradients, textures or patterns on pages.
-- **Imagery:** only Impact catalog product shots, object-contain on white squares. Pins (1000×1500) are purely typographic.
+- **Imagery:** only Impact catalog product shots, object-contain in squares on Paper, `mix-blend-mode: multiply` (no white box). Pins (1000×1500) are purely typographic.
 - **Corners:** 0 radius everywhere. **Shadows:** none. **Cards:** none — content sits directly on paper between hairlines.
 - **Hover:** links and rows fade to 60% opacity; muted links turn Ink; product images fade to 80%. **Press:** no state. **Animation:** only the default Tailwind 150ms opacity transition on images. No transparency/blur layers, no fixed elements.
 - **Buttons:** none exist — calls to action are underlined text links with ↗.
