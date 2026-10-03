@@ -19,6 +19,9 @@ Data: 29/09/2026. Responde ao Techonni em **português**, curto e direto; o site
 - [ ] Skimlinks: voltar a tentar a inscrição (erro do lado deles).
 - [ ] systeme.io: inscrever-se no programa de afiliados (60 % recorrente) para o Zunrel.
 
+## Tema (03/10/2026)
+- O site passou a ter o **mesmo tema do zunrel.com** (pedido do Techonni): fundo claro, só letra Geist, coluna estreita, cabeçalho como o do Zunrel. A skill `pieceworth-design` ainda tem o tema antigo (Cormorant): o CLAUDE.md diz o que mudou.
+
 ## Próximos passos (Claude)
 
 1. Ler as páginas oficiais da Farfetch que faltam (« Orders & shipping », « Payment & pricing », Access, contacto) no browser, confirmar os factos e acrescentar fontes.

@@ -1,6 +1,6 @@
 ## Project
 
-Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wisely. Owner: Techonni (not a developer; answer him in Portuguese, short and direct). Design is **minimal** by his request: ivory background, serif titles, no decoration (see « Brand kit » below).
+Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wisely. Owner: Techonni (not a developer; answer him in Portuguese, short and direct). Design: **same theme as zunrel.com** (Techonni's request, 03/10/2026): light background, Geist only, narrow column.
 
 - Stack: Astro + Tailwind, static. Guides in `src/lib/guides-en.ts` and `src/lib/guides-fr.ts`; languages, paths and UI text in `src/lib/i18n.ts`.
 - Languages: English (US audience) at the root, French (France and Belgium) under `/fr/`. Every guide exists in both, same `id`, local `slug`. The « US · FR » switch at the top right goes to the same page in the other language (hreflang). The French version uses EU facts (duties, Klarna limits), not US ones.
@@ -9,6 +9,8 @@ Pieceworth (pieceworth.com): an anonymous affiliate site about buying luxury wis
 - Local dev server: `npx astro dev --port 4322 --background`.
 
 ## Brand kit (applies to every role)
+
+**Update 03/10/2026:** Techonni asked for all his sites (zunrel.com, techonni.com, pieceworth.com, dariopinheiro.com) to share the zunrel.com theme. This overrides the colors and type below and in the `pieceworth-design` skill (not yet updated): Paper `#fbfbfb`, Ink `#171717`, Muted `#737373`, Line `#e5e5e5`; **Geist only** (no Cormorant): page titles 26px/32px semibold, tracking -0.015em; section labels 13px Muted, no uppercase; column max 580px; header full width with nav 15px semibold. Voice, layout rules and affiliate rules still apply.
 
 The design system lives in `.claude/skills/pieceworth-design/` (skill `pieceworth-design`). Anyone working on Pieceworth, whatever the task (developer, designer, writer, SEO, social media, email, ads), must follow it. Load the skill before producing anything visible: pages, components, pins, social images, emails, mockups, decks, copy.
 

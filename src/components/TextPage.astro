@@ -55,7 +55,7 @@ const text = {
 ---
 
 <Base lang={lang} title={text.title} description={text.description} alternates={pageAlternates(page)} crumbs={[{ label: text.title }]}>
-  <h1 class="pt-6 font-serif text-[40px] leading-tight">{text.title}</h1>
+  <h1 class="pt-6 text-[26px] font-semibold leading-8 tracking-[-0.015em]">{text.title}</h1>
   <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
   <div class="prose-text mt-8">
     {text.body.map((paragraph) => <p set:html={paragraph} />)}

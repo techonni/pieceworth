@@ -82,16 +82,15 @@ const switcher = (["en", "fr"] as const).map((code) => ({
     {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
-  <body class="min-h-screen bg-paper font-sans text-[15px] leading-7 text-ink">
-    <div class="mx-auto max-w-2xl px-5 sm:px-6">
-      <header class="py-8">
-        <div class="flex items-baseline justify-between">
-          <a href={paths.home[lang]} class="font-serif text-2xl tracking-wide">{siteName}</a>
-          <nav class="flex gap-3 text-[13px] text-muted">
-            {nav.map((item, index) => <>{index > 0 && <span aria-hidden="true" class="text-muted/50">·</span>}<a href={item.href} class="hover:text-ink">{item.label}</a></>)}
+  <body class="min-h-screen bg-paper font-sans text-[15px] leading-6 text-ink">
+    <header class="px-5 py-6 sm:px-8">
+        <div class="flex items-center justify-between">
+          <a href={paths.home[lang]} class="text-[15px] font-semibold tracking-[-0.01em]">{siteName}</a>
+          <nav class="flex gap-4 text-[15px] font-semibold leading-5 tracking-[-0.01em] sm:gap-6">
+            {nav.map((item) => <a href={item.href} class="hover:opacity-70">{item.label}</a>)}
           </nav>
         </div>
-        <nav aria-label="Language / Langue" class="mt-3 flex justify-end gap-3 text-[11px] uppercase tracking-[0.18em]">
+        <nav aria-label="Language / Langue" class="mt-3 flex justify-end gap-3 text-[12px] font-medium tracking-[0.04em]">
           {
             switcher.map((item) =>
               item.code === lang ? (
@@ -102,10 +101,11 @@ const switcher = (["en", "fr"] as const).map((code) => ({
             )
           }
         </nav>
-      </header>
+    </header>
+    <div class="mx-auto w-full max-w-[580px] px-5 pt-16 min-[620px]:px-0">
       {
         trail.length > 0 && (
-          <nav aria-label="Breadcrumb" class="text-[12px] text-muted">
+          <nav aria-label="Breadcrumb" class="mb-6 text-[13px] leading-5 text-muted">
             <ol class="flex flex-wrap gap-x-3">
               {trail.map((crumb, index) => (
                 <li class="flex gap-3">
@@ -117,11 +117,11 @@ const switcher = (["en", "fr"] as const).map((code) => ({
           </nav>
         )
       }
-      <main class="pb-24">
+      <main>
         <slot />
       </main>
-      <footer class="border-t border-line py-10 text-[12px] leading-6 text-muted">
-        <p class="mb-4 uppercase tracking-[0.18em]">{t.footerLine}</p>
+      <footer class="mt-12 pb-16 text-[13px] leading-5 text-[#a0a0a0]">
+        <p class="mb-4">{t.footerLine}</p>
         <p>
           {t.footer} <a href={paths.disclosure[lang]} class="underline underline-offset-4">{t.disclosure}</a>.
         </p>

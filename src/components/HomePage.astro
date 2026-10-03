@@ -14,13 +14,13 @@ const [before, word, after] = t.heroTitle;
 
 <Base lang={lang} alternates={pageAlternates("home")}>
   <section class="pt-10 pb-16">
-    <h1 class="font-serif text-[42px] leading-[1.1] sm:text-[52px]">{before}<em class="italic">{word}</em>{after}</h1>
+    <h1 class="text-[26px] font-semibold leading-8 tracking-[-0.015em]">{before}{word}{after}</h1>
     <div class="mt-6 h-[2px] w-[90px] bg-ink" aria-hidden="true"></div>
     <p class="mt-5 max-w-md text-muted">{t.heroText}</p>
   </section>
 
   <section>
-    <h2 class="text-[12px] uppercase tracking-[0.18em] text-muted">01 · {t.guides}</h2>
+    <h2 class="text-[13px] leading-5 text-muted">01 · {t.guides}</h2>
     <div class="mt-4"><GuideList lang={lang} /></div>
   </section>
 </Base>
