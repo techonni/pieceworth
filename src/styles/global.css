@@ -1,13 +1,20 @@
 @import "tailwindcss";
 @import "@fontsource-variable/geist";
+@import "./tokens.css";
 
 @theme {
-  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-  /* Même thème que zunrel.com. */
-  --color-paper: #fbfbfb;
-  --color-ink: #171717;
-  --color-muted: #737373;
-  --color-line: #e5e5e5;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Geist Variable", "Inter", system-ui, sans-serif;
+  /* Shared identity (tokens.css): black background, dark greys, white text. */
+  --color-paper: #000000;
+  --color-ink: #ffffff;
+  --color-muted: #95959b;
+  --color-faint: #808086;
+  --color-line: #3a3a3c;
+  --color-surface: #141414;
+  --color-surface-2: #202020;
+  --color-surface-3: #292929;
+  --color-accent: #ffffff;
+  --color-on-accent: #000000;
 }
 
 html {
@@ -16,7 +23,17 @@ html {
 }
 
 ::selection {
-  background: var(--color-line);
+  background: #3a3a3c;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+html {
+  color-scheme: dark;
 }
 
 .prose-text p + p {

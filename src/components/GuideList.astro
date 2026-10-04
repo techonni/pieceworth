@@ -9,15 +9,15 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<ul class="divide-y divide-line border-t border-b border-line">
+<ul class="divide-y divide-line overflow-hidden rounded-[24px] border border-line bg-surface-2">
   {
     guides[lang].map((guide, index) => (
       <li>
-        <a href={guidePath(lang, guide)} class="flex gap-5 py-5 hover:opacity-60">
-          <span class="w-5 shrink-0 pt-[9px] text-[12px] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
+        <a href={guidePath(lang, guide)} class="group flex gap-4 px-5 py-5 transition-colors hover:bg-surface-3">
+          <span class="w-5 shrink-0 pt-[4px] text-[12px] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
           <span>
-            <span class="text-[15px] font-medium leading-5">{guide.question}</span>
-            <span class="mt-1 block text-[13px] text-muted">{guide.summary}</span>
+            <span class="text-[17px] font-semibold leading-[22px] group-hover:underline group-hover:underline-offset-4">{guide.question}</span>
+            <span class="mt-1.5 block text-[14px] leading-5 text-muted">{guide.summary}</span>
           </span>
         </a>
       </li>
