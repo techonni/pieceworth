@@ -1,5 +1,6 @@
 ---
 // Numbered list of guides (home page and guides index).
+// Minimal style (Dário, 2026-10-04): no rounded card, thin lines between items, arrow on the right.
 import { guidePath, guides, type Lang } from "../lib/i18n";
 
 interface Props {
@@ -9,16 +10,17 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<ul class="divide-y divide-line overflow-hidden rounded-[24px] border border-line bg-surface-2">
+<ul class="divide-y divide-surface-3 border-y border-surface-3">
   {
     guides[lang].map((guide, index) => (
       <li>
-        <a href={guidePath(lang, guide)} class="group flex gap-4 px-5 py-5 transition-colors hover:bg-surface-3">
-          <span class="w-5 shrink-0 pt-[4px] text-[12px] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
-          <span>
-            <span class="text-[17px] font-semibold leading-[22px] group-hover:underline group-hover:underline-offset-4">{guide.question}</span>
+        <a href={guidePath(lang, guide)} class="group flex items-center gap-4 py-5">
+          <span class="w-5 shrink-0 self-start pt-[4px] text-[12px] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
+          <span class="min-w-0 flex-1">
+            <span class="text-[17px] font-semibold leading-[22px]">{guide.question}</span>
             <span class="mt-1.5 block text-[14px] leading-5 text-muted">{guide.summary}</span>
           </span>
+          <span aria-hidden="true" class="shrink-0 pr-1 text-[17px] text-muted transition-[color,transform] duration-150 group-hover:translate-x-[3px] group-hover:text-ink group-focus-visible:translate-x-[3px] group-focus-visible:text-ink motion-reduce:transition-none">→</span>
         </a>
       </li>
     ))

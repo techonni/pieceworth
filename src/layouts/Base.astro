@@ -89,7 +89,7 @@ const switcher = (["en", "fr"] as const).map((code) => ({
           <a href={paths.home[lang]} class="text-[15px] font-semibold tracking-[-0.01em]">{siteName}</a>
           <button
             type="button"
-            class="-my-1.5 flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface-2 text-ink transition-colors hover:bg-surface-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            class="-my-1.5 flex h-10 w-10 items-center justify-center rounded-[8px] text-ink transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             aria-expanded="false"
             aria-controls="site-menu"
             aria-label="Menu"
@@ -112,13 +112,13 @@ const switcher = (["en", "fr"] as const).map((code) => ({
         role="dialog"
         aria-modal="true"
         aria-label="Menu"
-        class="absolute inset-y-0 right-0 flex w-[85%] max-w-[360px] translate-x-full flex-col overflow-y-auto rounded-l-[24px] border-l border-line bg-surface px-5 pb-8 pt-6 shadow-[0_8px_32px_rgb(0_0_0/0.6)] transition-transform duration-300 ease-out group-data-[open]/drawer:translate-x-0 motion-reduce:transition-none sm:w-[320px] sm:px-8"
+        class="absolute inset-y-0 right-0 flex w-[85%] max-w-[360px] translate-x-full flex-col overflow-y-auto border-l border-surface-3 bg-paper px-5 pb-8 pt-6 shadow-[0_8px_32px_rgb(0_0_0/0.6)] transition-transform duration-300 ease-out group-data-[open]/drawer:translate-x-0 motion-reduce:transition-none sm:w-[320px] sm:px-8"
         data-menu-panel
       >
         <div class="flex justify-end">
           <button
             type="button"
-            class="-my-1.5 flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface-2 text-ink transition-colors hover:bg-surface-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            class="-my-1.5 flex h-10 w-10 items-center justify-center rounded-[8px] text-ink transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
             aria-label={lang === "en" ? "Close menu" : "Fermer le menu"}
             data-menu-close
           >
@@ -127,16 +127,17 @@ const switcher = (["en", "fr"] as const).map((code) => ({
             </svg>
           </button>
         </div>
-        <nav class="mt-8 flex flex-col overflow-hidden rounded-[20px] border border-line bg-surface-2 text-[17px] font-semibold leading-5 tracking-[-0.01em]">
-          {nav.map((item) => <a href={item.href} class="flex items-center justify-between border-b border-line px-4 py-3.5 last:border-b-0 hover:bg-surface-3">{item.label}<span aria-hidden="true" class="text-muted">›</span></a>)}
+        <!-- Plain rows with thin separators and a › arrow (no grouped card). -->
+        <nav class="mt-8 flex flex-col border-t border-surface-3 text-[17px] font-semibold leading-5 tracking-[-0.01em]">
+          {nav.map((item) => <a href={item.href} class="group flex items-center justify-between border-b border-surface-3 py-3.5 pr-1">{item.label}<span aria-hidden="true" class="text-[20px] font-normal text-muted transition-[color,transform] duration-150 group-hover:translate-x-[3px] group-hover:text-ink group-focus-visible:translate-x-[3px] group-focus-visible:text-ink motion-reduce:transition-none">›</span></a>)}
         </nav>
-        <nav aria-label="Language / Langue" class="mt-6 flex w-fit gap-1 rounded-full border border-line bg-surface-2 p-1 text-[13px] font-semibold tracking-[0.04em]">
+        <nav aria-label="Language / Langue" class="mt-6 flex w-fit gap-5 text-[13px] font-semibold tracking-[0.04em]">
           {
             switcher.map((item) =>
               item.code === lang ? (
-                <span aria-current="true" class="rounded-full bg-accent px-3.5 py-1.5 text-on-accent">{item.label}</span>
+                <span aria-current="true" class="py-1.5 text-ink underline underline-offset-4">{item.label}</span>
               ) : (
-                <a href={item.href} hreflang={item.code} class="rounded-full px-3.5 py-1.5 text-muted hover:bg-surface-3 hover:text-ink">{item.label}</a>
+                <a href={item.href} hreflang={item.code} class="py-1.5 text-muted hover:text-ink">{item.label}</a>
               ),
             )
           }
