@@ -83,8 +83,8 @@ const switcher = (["en", "fr"] as const).map((code) => ({
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="min-h-screen bg-paper font-sans text-[15px] leading-6 text-ink">
-    <!-- Bottom padding keeps the page where it was before the language row moved into the menu. -->
-    <header class="px-5 pb-[60px] pt-6 sm:px-8">
+    <!-- Sticky header (Dário, 2026-10-04): stays at the top, black background, thin line once scrolled. -->
+    <header data-sticky-header class="sticky top-0 z-40 border-b border-transparent bg-paper px-5 py-6 transition-colors duration-200 data-[scrolled]:border-surface-3 sm:px-8">
         <div class="flex items-center justify-between">
           <a href={paths.home[lang]} class="text-[15px] font-semibold tracking-[-0.01em]">{siteName}</a>
           <button
@@ -101,6 +101,18 @@ const switcher = (["en", "fr"] as const).map((code) => ({
           </button>
         </div>
     </header>
+    <script is:inline>
+      // Sticky header: thin line at the bottom only once the page is scrolled.
+      (function () {
+        var header = document.querySelector("[data-sticky-header]");
+        if (!header) return;
+        var update = function () { header.toggleAttribute("data-scrolled", window.scrollY > 4); };
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+      })();
+    </script>
+    <!-- Spacer: keeps the page where it was before (the header used to have 60px of bottom padding). -->
+    <div aria-hidden="true" class="h-9"></div>
     <!-- Side drawer: slides in from the right, full height, over a dimmed page. -->
     <div id="site-menu" hidden class="group/drawer fixed inset-0 z-50" data-menu-drawer>
       <div
